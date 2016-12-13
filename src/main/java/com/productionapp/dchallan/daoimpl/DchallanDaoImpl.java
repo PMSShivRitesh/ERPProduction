@@ -1,6 +1,5 @@
 package com.productionapp.dchallan.daoimpl;
 
-import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -12,10 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.productionapp.bean.DChallanModel;
-import com.productionapp.dchallan.dao.DchallanDao;
+import com.productionapp.dao.dchallan.DchallanDao;
 import com.productionapp.dchallan.model.DchallanDetail;
 import com.productionapp.dchallan.model.DchallanItems;
-import com.productionapp.sales.model.SalesOrderDetail;
 
 @Repository("dchallandaoimpl")
 public class DchallanDaoImpl implements DchallanDao{
@@ -67,7 +65,7 @@ public class DchallanDaoImpl implements DchallanDao{
 		sessionfactory.getCurrentSession().saveOrUpdate(challanitems);
 	}
 	
-	public List getDchallanItemList(int dcchno){
+	public List<DchallanItems> getDchallanItemList(int dcchno){
 		return sessionfactory.getCurrentSession().createCriteria(DchallanItems.class).add(Restrictions.eq("dchallanno", dcchno)).list();
 	}
 	
@@ -77,7 +75,7 @@ public class DchallanDaoImpl implements DchallanDao{
 		return false;
 	}
 	
-	public List getallDchallanList(){
+	public List<DchallanDetail> getallDchallanList(){
 		loger.info("Get D.Challan List");
 		return sessionfactory.getCurrentSession().createCriteria(DchallanDetail.class).list();
 		

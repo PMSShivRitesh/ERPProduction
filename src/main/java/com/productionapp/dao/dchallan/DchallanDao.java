@@ -1,17 +1,18 @@
-package com.productionapp.dchallan.dao;
+package com.productionapp.dao.dchallan;
 
 import java.util.List;
 
 import com.productionapp.bean.DChallanModel;
 import com.productionapp.dchallan.model.DchallanDetail;
+import com.productionapp.dchallan.model.DchallanItems;
 
 
 public interface DchallanDao {
 	public int saveDchallanDetail(DChallanModel dchallan);
 	public void saveDchallanItems(DChallanModel dchallan);
-	public List getDchallanItemList(int dcchno);
+	public List<DchallanItems> getDchallanItemList(int dcchno);
 	public boolean deletedchallanitems(int srno);
-	public List getallDchallanList();
+	public List<DchallanDetail> getallDchallanList();
 	public DchallanDetail getDchallandetail(int dchallanno);
 
 }
