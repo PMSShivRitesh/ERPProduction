@@ -7,8 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.sun.istack.internal.NotNull;
-
 @Entity
 @Table(name="Country")
 
@@ -18,7 +16,6 @@ public class Country {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name = "countryId")
 	private Integer countryId;
-	@NotNull
 	@Column(name="countryName",unique=true)
 	private String countryName;
 

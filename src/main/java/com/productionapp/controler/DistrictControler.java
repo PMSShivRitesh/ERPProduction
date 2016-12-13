@@ -3,7 +3,6 @@ package com.productionapp.controler;
 import java.util.List;
 import java.util.Map;
 
-import org.hibernate.criterion.Distinct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +12,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
 import com.productionapp.model.District;
-import com.productionapp.model.State;
 import com.productionapp.service.CountryService;
 import com.productionapp.service.DistrictService;
 import com.productionapp.service.StateService;
