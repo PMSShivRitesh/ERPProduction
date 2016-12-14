@@ -5,6 +5,8 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.hibernate.Query;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
@@ -86,6 +88,17 @@ public class DchallanDaoImpl implements DchallanDao{
 	public DchallanDetail getDchallandetail(int dchallanno){
 		loger.info("Get D.Challan Detail");
 		return (DchallanDetail) sessionfactory.getCurrentSession().createCriteria(DchallanDetail.class).add(Restrictions.eq("dchallanno", dchallanno)).uniqueResult();
+	}
+	
+	public boolean updateDchallanStatus(int dchallanno,String status){
+		loger.info("update D.Challan Status");
+		Session session=sessionfactory.openSession();
+		Query query = session.createQuery("update DchallanDetail set dchallanstatus =?" +
+				" where dchallanno =?");
+				query.setParameter(0, status);
+				query.setParameter(1, dchallanno);
+					int result = query.executeUpdate();
+		return false;
 	}
 
 }

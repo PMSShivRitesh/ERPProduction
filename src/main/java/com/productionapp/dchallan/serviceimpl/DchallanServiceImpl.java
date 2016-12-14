@@ -48,4 +48,9 @@ public class DchallanServiceImpl implements DchallanService {
 		return dao.getDchallandetail(dchallanno);
 	}
 
+	public boolean updateDchallanStatus(int dchallanno, String status) {
+		// TODO Auto-generated method stub
+		return dao.updateDchallanStatus(dchallanno, status);
+	}
+
 }

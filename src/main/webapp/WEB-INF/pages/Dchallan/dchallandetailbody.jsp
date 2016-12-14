@@ -9,12 +9,26 @@
 					<div class="row-fluid">
 						<div class="span9" align="left">D.Challan Detail</div>
 						<div class="span3" align="right">
-						<div class="btn" align="left" title="Sales Home" >
+						
+							
+								<c:choose>
+    <c:when test="${dchllanobj.dchallanstatus=='Pending'}">
+       <div class="btn" align="left" title="Confirm" onclick="updatedchallanstatus()" >
+							<i class="icon-ok"></i>
+							<!--  	<input type="button" class="glyphicon glyphicon-step-backward" value="Next" onclick="getNextForm()"/>-->
+							</div>
+    </c:when>    
+    <c:otherwise>
+      <div class="btn" align="left" title="Sales Home" >
 							<i class="icon-print"></i>
 							<!--  	<input type="button" class="glyphicon glyphicon-step-backward" value="Next" onclick="getNextForm()"/>-->
 							</div>
+    </c:otherwise>
+</c:choose>
 							
-								<div class="btn" align="left" title="Sales Home" onclick="gethomepage()" >
+							
+							
+							<div class="btn" align="left" title="Sales Home" onclick="gethomepage()" >
 							<i class="icon-home"></i>
 							<!--  	<input type="button" class="glyphicon glyphicon-step-backward" value="Next" onclick="getNextForm()"/>-->
 							</div>
@@ -49,7 +63,7 @@
 						<div class="control-group">
 							<label class="control-label">D.Challan No</label>
 							<div class="controls">
-						<input size="14%" type="text" class="form-control" readonly="readonly" value="${dchllanobj.dchallanno}" placeholder="" value=""  />
+						<input size="14%" type="text" class="form-control" readonly="readonly" id="dchallanno" value="${dchllanobj.dchallanno}" placeholder="" value=""  />
 							</div>
 						</div>
 					</div>
@@ -325,5 +339,16 @@ function deleteRowsChecked() {
 	}
 }
 
+
+function updatedchallanstatus()
+{
+	
+	var dchallanno=document.getElementById("dchallanno").value;
+
+	$.getJSON('updatedchallanstatus.html',{dchallanno:dchallanno,status:'confirm'}).done(function(json ) {
+			
+	  })
+	
+	}
 
 </script>

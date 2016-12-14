@@ -43,6 +43,14 @@ public class DChallanControler {
 		
 	}
 	
+	@RequestMapping("/updatedchallanstatus")
+	public String updatedchallanstatus(@RequestParam(value="dchallanno") String dchallanno,@RequestParam(value="status") String status){
+		loger.info("update D.Challan Status");
+		dchallanservice.updateDchallanStatus(Integer.parseInt(dchallanno), status);
+		return "success";
+		
+	}
+	
 	@RequestMapping("/dchallandetail")
 	public ModelAndView getdchallandetail(@RequestParam(value="dchallanno") String dchallanno){
 		loger.info("Gate D.Challan Detail");
@@ -56,6 +64,7 @@ public class DChallanControler {
 		return model;
 		
 	}
+	
 	
 	@RequestMapping("/saveDChallan")
 	public String saveDChallan(@RequestBody DChallanModel dchallan){

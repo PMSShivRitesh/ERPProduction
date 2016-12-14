@@ -12,5 +12,6 @@ public interface DchallanService {
 	public boolean deletedchallanitems(int srno);
 	public List getallDchallanList();
 	public DchallanDetail getDchallandetail(int dchallanno);
+	public boolean updateDchallanStatus(int dchallanno,String status);
 
 }
