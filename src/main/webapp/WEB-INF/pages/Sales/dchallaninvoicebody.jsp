@@ -1,6 +1,6 @@
-<body onload="hide()">
+
 <fieldset class="fieldset-style">
-<form role="form" action="saveInvoice.html" method="post">
+<form role="form" action="dchallaninvoicedisplay.html" method="post">
 <div class="form-horizontal">
 		<div class="panel panel-default">
 			<div class="panel-heading">
@@ -29,7 +29,7 @@
 							<label class="control-label">Customer Name</label>
 							<div class="controls">
 							
-								<input type="text" class="form-control" name="custName" id="custName" placeholder="" required="required" onblur="getDChallannolst()"/>
+								<input type="text" class="form-control" name="custName" id="custName" placeholder="" value="${custName}" required="required" onblur="getDChallannolst()"/>
 							</div>
 						</div>
 						
@@ -43,7 +43,7 @@
 						<div class="control-group">
 							<label class="control-label">D.Challa No</label>
 							<div class="controls">
-								<select class="form-control"  id="dchallanno" onchange="this.form.submit()"></select>
+								<select class="form-control"  id="dchallanno" name="dchallanno" onchange="this.form.submit()"></select>
 							</div>
 						</div> 
 						
@@ -64,10 +64,93 @@
 					</div>
 				</div>
 			</div>
+			
+			 <div class="panel-heading">
+				<div class="container-fluid header-padding">
+					<div class="row-fluid">
+						<div class="span9" align="left">D.Challan Detail</div>
+						<div class="span3" align="right">
+							
+						</div>
+					</div>	
+				</div>
+			</div>	
+			
+			
+			
+		
+		<div class="container-fluid panel-body">
+				<div class="row-fluid search-align">
+					<div class="firstquad">
+					
+						
+						
+						
+						 <div class="control-group">
+							<label class="control-label">D.Challan No</label>
+							<div class="controls">
+									<input type="text" class="form-control" id="invoiceDate" value="${dchallanno}" readonly="readonly" name="invoiceDate"   placeholder="" />
+							</div>
+					
+				
+						
+						 
+					</div>
+					</div>
+	
+					
+					
+					<!-- 2 Column -->	
+					
+					<div class="firstquad">
+					
+					<div class="control-group">
+							<label class="control-label">D.Challan Date</label>
+							<div class="controls">
+								<input type="text" name="itemDesc" required="required"  value="${dchllanobj.dchallandate}" readonly="readonly"
+			id="itemDesc" class="form-control" placeholder="" />
+							</div>
+						</div>
+						
+						
+					
+						
+				</div>
+						
+						<!-- 3 Column -->
+						
+					<div class="firstquad">
+						
+						
+						
+					<div class="control-group">
+							<label class="control-label">D.Challan Type</label>
+							<div class="controls">
+								<input type="text" name="itemDesc" required="required"  value="${dchllanobj.dchallantype}" readonly="readonly"
+			id="itemDesc" class="form-control" placeholder="" />
+							</div>
+						</div>
+						
+							
+					
+							
+								
+				</div>
+			</div>
 		</div>
-		
-	  
-		
+	 	
+	 	
+	 	 <div class="panel-heading">
+				<div class="container-fluid header-padding">
+					<div class="row-fluid">
+						<div class="span9" align="left">D.Challan Item Detail</div>
+						<div class="span3" align="right">
+							
+						</div>
+					</div>	
+				</div>
+			</div>	
+		</div>
 			<div class="panel-body">
 				<div class="singleline-records">
 						<table class="table table-bordered insideform" style="font-size: 12px;" id="dchallantable">
@@ -95,15 +178,17 @@
              		           							<tr class="" bgcolor="#dfe4e6">
              		           							<%
              		           							}
-             		           					i++;
-             		           					%>
-             		           						
+             		           					
+             		           						%>
              		           						<td><%=i %></td>
-             		           						<td>${listValue.itemcode}</td>
+             		           						<% i++;
+             		           					%>
+             		           						<td>${listValue.itemCode}</td>
              		           					
              		           					
-             		           						<td>${listValue.itemQty}</td>
-             		           					
+             		           						<td>${listValue.qty}</td>
+             		           						<td>${listValue.rate}</td>
+             		           						<td>${listValue.amount}</td>
              		           					
              		           					
              		           					</tr>
@@ -124,13 +209,13 @@
 </body>
 
 <script>
-
+getDChallannolst();
 function getDChallannolst()
 {
 	
 	var custName=document.getElementById("custName").value;
 	
-	
+	if(custName!=""){
 			var List;
 			jQuery.ajax({
 		 	url: "getdchallannolst.html?custName="+custName+"&status=confirm",
@@ -150,7 +235,7 @@ function getDChallannolst()
 	
 				});
 			
-			
+	}	
 			
 	
 }
