@@ -1,4 +1,4 @@
-package com.productionapp.sales.model;
+package com.productionapp.model.sales;
 
 
 import javax.persistence.Column;

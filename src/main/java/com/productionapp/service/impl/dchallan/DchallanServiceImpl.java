@@ -8,8 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.productionapp.bean.DChallanModel;
 import com.productionapp.dao.dchallan.DchallanDao;
-import com.productionapp.dchallan.model.DchallanDetail;
-import com.productionapp.dchallan.model.DchallanItems;
+import com.productionapp.model.dchallan.DchallanDetail;
+import com.productionapp.model.dchallan.DchallanItems;
 import com.productionapp.service.dchallan.DchallanService;
 
 

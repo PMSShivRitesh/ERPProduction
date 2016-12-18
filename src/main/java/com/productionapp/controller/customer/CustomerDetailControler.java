@@ -1,4 +1,4 @@
-package com.productionapp.customer.controller;
+package com.productionapp.controller.customer;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -20,14 +20,13 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import com.google.gson.Gson;
-import com.productionapp.customer.model.CustomerContactPersions;
-import com.productionapp.customer.model.CustomerDetail;
-import com.productionapp.customer.model.CustomerDocuments;
-import com.productionapp.customer.service.CustmerContactPersionsService;
-import com.productionapp.customer.service.CustomerDetailService;
-import com.productionapp.customer.service.CustomerDocumentService;
-
+import com.productionapp.model.customer.CustomerContactPersions;
+import com.productionapp.model.customer.CustomerDetail;
+import com.productionapp.model.customer.CustomerDocuments;
 import com.productionapp.service.CountryService;
+import com.productionapp.service.customer.CustmerContactPersionsService;
+import com.productionapp.service.customer.CustomerDetailService;
+import com.productionapp.service.customer.CustomerDocumentService;
 
 
 @EnableWebMvc
@@ -188,7 +187,7 @@ public class CustomerDetailControler {
 		loger.info("Get Apply taxes on customer "+customerobj.getCustName());
 		int custId=custservice.getCustId(customerobj.getCustName());
 		loger.info("custid test   "+ custId);
-		List<CustomerDetail> customertaxlst=custservice.getApplyeTaxOfCustomer(custId);
+		CustomerDetail customertaxlst=custservice.getApplyeTaxOfCustomer(custId);
 		Gson gson=new Gson();
 		String json=gson.toJson(customertaxlst);
 		return json;

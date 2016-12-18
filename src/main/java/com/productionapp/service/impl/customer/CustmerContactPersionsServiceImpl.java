@@ -1,4 +1,4 @@
-package com.productionapp.customer.serviceimpl;
+package com.productionapp.service.impl.customer;
 
 import java.util.List;
 
@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.productionapp.customer.dao.CustmerContactPersionsDao;
-import com.productionapp.customer.model.CustomerContactPersions;
-import com.productionapp.customer.service.CustmerContactPersionsService;
+import com.productionapp.dao.customer.CustmerContactPersionsDao;
+import com.productionapp.model.customer.CustomerContactPersions;
+import com.productionapp.service.customer.CustmerContactPersionsService;
 
 
 

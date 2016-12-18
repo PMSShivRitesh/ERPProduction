@@ -1,4 +1,4 @@
-package com.productionapp.sales.dao;
+package com.productionapp.dao.sales;
 
 import java.util.List;
 

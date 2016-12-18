@@ -14,9 +14,9 @@ import org.springframework.stereotype.Repository;
 
 import com.productionapp.bean.DChallanModel;
 import com.productionapp.dao.dchallan.DchallanDao;
-import com.productionapp.dchallan.model.DchallanDetail;
-import com.productionapp.dchallan.model.DchallanItems;
 import com.productionapp.model.Item;
+import com.productionapp.model.dchallan.DchallanDetail;
+import com.productionapp.model.dchallan.DchallanItems;
 
 @Repository("dchallandaoimpl")
 public class DchallanDaoImpl implements DchallanDao{

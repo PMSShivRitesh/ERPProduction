@@ -1,4 +1,4 @@
-package com.productionapp.customer.controller;
+package com.productionapp.controller.customer;
 
 import java.util.List;
 
@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
-import com.productionapp.customer.model.CustomerItems;
-import com.productionapp.customer.service.CustomerDetailService;
-import com.productionapp.customer.service.CustomerItemService;
+import com.productionapp.model.customer.CustomerItems;
+import com.productionapp.service.customer.CustomerDetailService;
+import com.productionapp.service.customer.CustomerItemService;
 
 
 

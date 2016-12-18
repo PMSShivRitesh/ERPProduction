@@ -13,9 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.productionapp.bean.DChallanInvoice;
-import com.productionapp.customer.model.CustomerItems;
 import com.productionapp.dao.invoice.DChallanInvoiceDao;
-import com.productionapp.dchallan.model.DchallanItems;
+import com.productionapp.model.customer.CustomerItems;
+import com.productionapp.model.dchallan.DchallanItems;
 
 @Repository("dchallaninvoicedaoimpl")
 public class DChallanInvoiceDaoImpl implements DChallanInvoiceDao {

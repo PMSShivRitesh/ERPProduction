@@ -1,8 +1,8 @@
-package com.productionapp.customer.service;
+package com.productionapp.service.customer;
 
 import java.util.List;
 
-import com.productionapp.customer.model.CustomerContactPersions;
+import com.productionapp.model.customer.CustomerContactPersions;
 
 
 public interface CustmerContactPersionsService {

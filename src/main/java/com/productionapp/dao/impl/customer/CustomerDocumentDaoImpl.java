@@ -1,4 +1,4 @@
-package com.productionapp.customer.daoimpl;
+package com.productionapp.dao.impl.customer;
 
 import java.util.List;
 
@@ -11,8 +11,8 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.productionapp.customer.dao.CustomerDocumentDao;
-import com.productionapp.customer.model.CustomerDocuments;
+import com.productionapp.dao.customer.CustomerDocumentDao;
+import com.productionapp.model.customer.CustomerDocuments;
 
 
 @Repository("customerdocumentdao")

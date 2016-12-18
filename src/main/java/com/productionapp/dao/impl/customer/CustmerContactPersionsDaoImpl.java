@@ -1,4 +1,4 @@
-package com.productionapp.customer.daoimpl;
+package com.productionapp.dao.impl.customer;
 
 import java.util.List;
 
@@ -10,8 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.productionapp.customer.dao.CustmerContactPersionsDao;
-import com.productionapp.customer.model.CustomerContactPersions;
+import com.productionapp.dao.customer.CustmerContactPersionsDao;
+import com.productionapp.model.customer.CustomerContactPersions;
 
 
 @Repository("customercontactpersionsdaoimpl")

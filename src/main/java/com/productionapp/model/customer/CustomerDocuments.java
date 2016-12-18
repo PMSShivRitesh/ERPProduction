@@ -1,4 +1,4 @@
-package com.productionapp.customer.model;
+package com.productionapp.model.customer;
 
 import java.io.File;
 

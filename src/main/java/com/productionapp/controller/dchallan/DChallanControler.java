@@ -12,9 +12,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
 import com.productionapp.bean.DChallanModel;
-import com.productionapp.customer.service.CustomerDetailService;
-import com.productionapp.dchallan.model.DchallanDetail;
-import com.productionapp.dchallan.model.DchallanItems;
+import com.productionapp.model.dchallan.DchallanDetail;
+import com.productionapp.model.dchallan.DchallanItems;
+import com.productionapp.service.customer.CustomerDetailService;
 import com.productionapp.service.dchallan.DchallanService;
 
 

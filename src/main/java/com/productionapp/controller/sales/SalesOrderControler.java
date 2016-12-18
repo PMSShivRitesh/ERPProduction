@@ -1,4 +1,4 @@
-package com.productionapp.sales.controller;
+package com.productionapp.controller.sales;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,9 +13,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
 import com.productionapp.bean.SalesOrderModel;
-import com.productionapp.customer.service.CustomerDetailService;
-import com.productionapp.sales.model.SalesOrderItems;
-import com.productionapp.sales.service.SalesOrderService;
+import com.productionapp.model.sales.SalesOrderItems;
+import com.productionapp.service.customer.CustomerDetailService;
+import com.productionapp.service.sales.SalesOrderService;
 
 @RestController
 public class SalesOrderControler {

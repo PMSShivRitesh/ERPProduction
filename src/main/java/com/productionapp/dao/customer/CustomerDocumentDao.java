@@ -1,8 +1,8 @@
-package com.productionapp.customer.dao;
+package com.productionapp.dao.customer;
 
 import java.util.List;
 
-import com.productionapp.customer.model.CustomerDocuments;
+import com.productionapp.model.customer.CustomerDocuments;
 
 
 public interface CustomerDocumentDao {

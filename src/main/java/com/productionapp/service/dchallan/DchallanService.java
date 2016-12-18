@@ -3,8 +3,8 @@ package com.productionapp.service.dchallan;
 import java.util.List;
 
 import com.productionapp.bean.DChallanModel;
-import com.productionapp.dchallan.model.DchallanDetail;
-import com.productionapp.dchallan.model.DchallanItems;
+import com.productionapp.model.dchallan.DchallanDetail;
+import com.productionapp.model.dchallan.DchallanItems;
 
 public interface DchallanService {
 	public int saveDchallanDetail(DChallanModel dchallan);

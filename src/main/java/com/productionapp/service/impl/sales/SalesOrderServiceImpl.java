@@ -1,4 +1,4 @@
-package com.productionapp.sales.serviceimpl;
+package com.productionapp.service.impl.sales;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -6,8 +6,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.productionapp.bean.SalesOrderModel;
-import com.productionapp.sales.dao.SalesOrderDao;
-import com.productionapp.sales.service.SalesOrderService;
+import com.productionapp.dao.sales.SalesOrderDao;
+import com.productionapp.service.sales.SalesOrderService;
 
 
 @Transactional

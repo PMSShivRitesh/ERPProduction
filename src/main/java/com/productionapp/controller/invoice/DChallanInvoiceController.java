@@ -11,8 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
-import com.productionapp.customer.service.CustomerDetailService;
-import com.productionapp.dchallan.model.DchallanDetail;
+import com.productionapp.model.customer.CustomerDetail;
+import com.productionapp.model.dchallan.DchallanDetail;
+import com.productionapp.service.customer.CustomerDetailService;
 import com.productionapp.service.dchallan.DchallanService;
 import com.productionapp.service.invoice.DChallanInvoiceService;
 
@@ -25,6 +26,8 @@ public class DChallanInvoiceController {
 	DChallanInvoiceService dchallaninvoiceservice;
 	@Autowired
 	DchallanService dchallanserive;
+	@Autowired
+	CustomerDetailService custdetailserrvice;
 
 	private Logger loger=Logger.getLogger(DChallanInvoiceController.class);
 	@RequestMapping("/dchallaninvoice")
@@ -45,7 +48,9 @@ public class DChallanInvoiceController {
 		int custId=custservice.getCustId(custName);
 		List lst=dchallaninvoiceservice.getInvoiceDchallanItems(custId, Integer.parseInt(dchallanno));
 		DchallanDetail dchllanobj=dchallanserive.getDchallandetail(Integer.parseInt(dchallanno));
+		CustomerDetail custdetail=custdetailserrvice.getApplyeTaxOfCustomer(custId);
 		model.addObject("lst",lst);
+		model.addObject("custdetail",custdetail);
 		model.addObject("custName",custName);
 		model.addObject("dchallanno",dchallanno);
 		model.addObject("dchllanobj",dchllanobj);

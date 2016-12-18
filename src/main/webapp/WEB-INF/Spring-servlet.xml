@@ -50,18 +50,18 @@ xmlns:tx="http://www.springframework.org/schema/tx"
 				<value>com.productionapp.model.District</value>
 				<value>com.productionapp.model.Taluka</value>
 				<value>com.productionapp.model.Document</value>
-				<value>com.productionapp.customer.model.CustomerDetail</value>
-				<value>com.productionapp.customer.model.CustomerContactPersions</value>
-				<value>com.productionapp.customer.model.CustomerDocuments</value>
-				<value>com.productionapp.customer.model.CustomerItems</value>
+				<value>com.productionapp.model.customer.CustomerDetail</value>
+				<value>com.productionapp.model.customer.CustomerContactPersions</value>
+				<value>com.productionapp.model.customer.CustomerDocuments</value>
+				<value>com.productionapp.model.customer.CustomerItems</value>
 				<value>com.productionapp.model.SupplierDetail</value>
 				<value>com.productionapp.model.SupplierConatactPersions</value>
 				<value>com.productionapp.model.SupplierDocuments</value>
 				<value>com.productionapp.model.Item</value>
-				<value>com.productionapp.dchallan.model.DchallanDetail</value>
-				<value>com.productionapp.dchallan.model.DchallanItems</value>
-				<value>com.productionapp.sales.model.SalesOrderDetail</value>
-				<value>com.productionapp.sales.model.SalesOrderItems</value>
+				<value>com.productionapp.model.dchallan.DchallanDetail</value>
+				<value>com.productionapp.model.dchallan.DchallanItems</value>
+				<value>com.productionapp.model.sales.SalesOrderDetail</value>
+				<value>com.productionapp.model.sales.SalesOrderItems</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">

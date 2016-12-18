@@ -1,4 +1,4 @@
-package com.productionapp.sales.daoimpl;
+package com.productionapp.dao.impl.sales;
 
 import java.util.Iterator;
 import java.util.List;
@@ -12,10 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.productionapp.bean.SalesOrderModel;
-
-import com.productionapp.sales.dao.SalesOrderDao;
-import com.productionapp.sales.model.SalesOrderDetail;
-import com.productionapp.sales.model.SalesOrderItems;
+import com.productionapp.dao.sales.SalesOrderDao;
+import com.productionapp.model.sales.SalesOrderDetail;
+import com.productionapp.model.sales.SalesOrderItems;
 
 @Repository("salesorderdaoimpl")
 public class SalesOrderDaoImpl implements SalesOrderDao{

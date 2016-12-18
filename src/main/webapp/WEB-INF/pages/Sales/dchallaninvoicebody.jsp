@@ -57,7 +57,7 @@
 						 <div class="control-group">
 							<label class="control-label">Invoice Date</label>
 							<div class="controls">
-								<input type="text" class="form-control" id="invoiceDate" readonly="readonly" name="invoiceDate"   placeholder="" />
+								<input type="text" class="form-control" id="invoiceDate"  name="invoiceDate"   placeholder="" />
 							</div>
 						</div>  		
 											
@@ -107,7 +107,7 @@
 					<div class="control-group">
 							<label class="control-label">D.Challan Date</label>
 							<div class="controls">
-								<input type="text" name="itemDesc" required="required"  value="${dchllanobj.dchallandate}" readonly="readonly"
+								<input type="text" name="dchallandate" id="dchallandate" required="required"  value="${dchllanobj.dchallandate}" readonly="readonly"
 			id="itemDesc" class="form-control" placeholder="" />
 							</div>
 						</div>
@@ -150,10 +150,10 @@
 					</div>	
 				</div>
 			</div>	
-		</div>
+		
 			<div class="panel-body">
 				<div class="singleline-records">
-						<table class="table table-bordered insideform" style="font-size: 12px;" id="dchallantable">
+						<table class="table table-bordered insideform" style="font-size: 12px;" id="dchallaninvoicetable">
 									<thead style="font-size: 12px;">
 										<tr bgcolor="#84939f">
 												<th>Sr No.</th>
@@ -195,21 +195,126 @@
 												</c:forEach>
 											</c:if>
 								</table>
-								
-								
-								
 				
 				</div>
 				
+			</div>
+				
+				
+	 	 <div class="panel-heading">
+				<div class="container-fluid header-padding">
+					<div class="row-fluid">
+						<div class="span9" align="left">Amount Detail</div>
+						<div class="span3" align="right">
+							
+						</div>
+					</div>	
 				</div>
-	
-		</div>
-		
+			</div>	
+		<div class="container-fluid panel-body">
+				<div class="row-fluid search-align">
+					<div class="firstquad">
+				
+						<div class="control-group">
+							<label class="control-label">Basic Total</label>
+							<div class="controls">
+								<input type="text"  name="bTotal" id="bTotal" class="form-control" placeholder="" readonly="readonly" />
+							</div>
+						</div> 
+						<c:choose>
+						<c:when test="${custdetail.custcst=='YES'}">
+							<div class="control-group" id="cstdiv">
+							<label class="control-label">CST</label>
+							<div class="controls">
+									<input type="text" id="cstAmt" name="cstAmt" class="form-control" placeholder="" />
+							</div>
+						</div> 
+						</c:when> 
+						</c:choose>
+					
+						
+						<div class="control-group" id="cstdiv">
+							<label class="control-label">Transport</label>
+							<div class="controls">
+								<input type="text" class="form-control" placeholder=""  onblur="converWordToRs()" />
+							</div>
+						</div> 
+						
+						</div>
+						
+					<!-- 2 Column -->	
+					
+					<div class="firstquad">
+					<c:choose>
+						<c:when test="${custdetail.custexcise=='YES'}">
+						<div class="control-group" id="excisediv">
+							<label class="control-label">Excise 12.5%</label>
+							<div class="controls">
+								<input type="text" id="exciseAmt" name="exciseAmt"  class="form-control" value="0" placeholder="" />
+							</div>
+						</div>
+						</c:when>
+						</c:choose>
+						<c:choose>
+						<c:when test="${custdetail.custgst=='YES'}">
+						<div class="control-group" id="gstdiv">
+							<label class="control-label">GST</label>
+							<div class="controls">
+								<input type="text" class="form-control" placeholder="" />
+							</div>
+						</div>
+						</c:when>
+						</c:choose>
+						</div>
+						
+						<!-- 3 Column -->
+						
+					<div class="firstquad">
+							<c:choose>	
+						<c:when test="${custdetail.custvat=='YES'}">
+						<script>
+							
+						</script>
+						<div class="control-group" id="vatdiv">
+							<label class="control-label">Vat 12.5%</label>
+							<div class="controls">
+								<input type="text" id="vatAmt" name="vatAmt" readonly="readonly" class="form-control" placeholder="" ond  />
+							</div>
+						</div>
+						</c:when>
+						</c:choose>
+						<c:choose>
+						<c:when test="${custdetail.custservicetax=='YES'}">
+						<div class="control-group" id="servicetaxdiv">
+							<label class="control-label">Service Tax</label>
+							<div class="controls">
+							<input type="text" id="serviceTaxAmt" name="serviceTaxAmt" class="form-control" placeholder="" />
+							</div>
+						</div>
+						</c:when>
+						</c:choose>		
+						
+							<div class="control-group" id="cstdiv">
+							<label class="control-label">Final Amount</label>
+							<div class="controls">
+								<input type="text" class="form-control" readonly="readonly" placeholder="" id="netAmt" name="netAmt" onblur="converWordToRs()" />
+							</div>
+						</div> 			
+					</div>
+					
+				</div>
+				</div>
+		  	
+	</div>
+	 
+	</div>
+	</form>
 	</fieldset>
 </body>
 
 <script>
 getDChallannolst();
+calculatevat();
 function getDChallannolst()
 {
 	
@@ -239,5 +344,50 @@ function getDChallannolst()
 			
 	
 }
+
+function calculateTotal() 
+{ 
+
+		var sum=0;
+		var oTable = document.getElementById("dchallaninvoicetable");
+		 
+		 var i;
+		 
+	     var rowLength = oTable.rows.length;
+	     
+	    
+	    
+		  for (i =1; i <rowLength; i++)
+		  {
+		      var oCells = oTable.rows.item(i).cells;
+		      
+		      sum=sum+parseFloat(oCells[4].firstChild.data);
+		      
+		     
+		  }
+		
+		
+		 document.getElementById("bTotal").value =sum;
+		
+		  
+}
+
+
+function calculatevat()
+{
+	calculateTotal();
+	 var vatamt=(parseFloat(document.getElementById("bTotal").value)*0.125);
+	document.getElementById("vatAmt").value=Math.round(vatamt);
+	document.getElementById("netAmt").value=Math.round(vatamt)+parseFloat(document.getElementById("bTotal").value);
+				
+}
+
+
+$(function() {
+	   $( "#invoiceDate").datepicker();
+	    $( "#invoiceDate").datepicker("show");	
+
+});
+
 
 </script>

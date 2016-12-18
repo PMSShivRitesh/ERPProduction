@@ -1,4 +1,4 @@
-package com.productionapp.customer.model;
+package com.productionapp.model.customer;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

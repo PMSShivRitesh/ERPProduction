@@ -1,8 +1,8 @@
-package com.productionapp.customer.service;
+package com.productionapp.service.customer;
 
 import java.util.List;
 
-import com.productionapp.customer.model.CustomerDetail;
+import com.productionapp.model.customer.CustomerDetail;
 
 
 public interface CustomerDetailService {
@@ -13,6 +13,6 @@ public interface CustomerDetailService {
 	public CustomerDetail getCustomerDetail(int custid);
 	public boolean updateCustomerDetail(CustomerDetail mobj);
 	public List<CustomerDetail> getCustList();
-	public List getApplyeTaxOfCustomer(int custID);
+	public CustomerDetail getApplyeTaxOfCustomer(int custID);
 	public String getCustName(int custId);
 }

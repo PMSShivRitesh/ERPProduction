@@ -1,4 +1,4 @@
-package com.productionapp.customer.controller;
+package com.productionapp.controller.customer;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -21,11 +21,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
-import com.productionapp.customer.model.CustomerDocuments;
-import com.productionapp.customer.service.CustomerDocumentService;
-
-
+import com.productionapp.model.customer.CustomerDocuments;
 import com.productionapp.service.DocumentService;
+import com.productionapp.service.customer.CustomerDocumentService;
 
 @RestController
 public class CustomerDocumentControler {

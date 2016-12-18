@@ -1,4 +1,4 @@
-package com.productionapp.customer.daoimpl;
+package com.productionapp.dao.impl.customer;
 
 import java.util.Iterator;
 import java.util.List;
@@ -13,8 +13,8 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.productionapp.customer.dao.CustomerDetailDao;
-import com.productionapp.customer.model.CustomerDetail;
+import com.productionapp.dao.customer.CustomerDetailDao;
+import com.productionapp.model.customer.CustomerDetail;
 
 
 @Repository("customerdetaildao")
@@ -81,9 +81,9 @@ public class CustomerDetailDaoImpl implements CustomerDetailDao {
 		
 	}
 	
-	public List getApplyeTaxOfCustomer(int custID){
+	public CustomerDetail getApplyeTaxOfCustomer(int custID){
 		loger.info("Get Taxes apply for customer");
-		return sessionfactory.getCurrentSession().createCriteria(CustomerDetail.class).add(Restrictions.eq("custId", custID)).list();
+		return (CustomerDetail) sessionfactory.getCurrentSession().createCriteria(CustomerDetail.class).add(Restrictions.eq("custId", custID)).uniqueResult();
 	}
 	
 

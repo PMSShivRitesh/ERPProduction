@@ -1,4 +1,4 @@
-package com.productionapp.customer.serviceimpl;
+package com.productionapp.service.impl.customer;
 
 
 import java.util.List;
@@ -7,9 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.productionapp.customer.dao.CustomerDetailDao;
-import com.productionapp.customer.model.CustomerDetail;
-import com.productionapp.customer.service.CustomerDetailService;
+import com.productionapp.dao.customer.CustomerDetailDao;
+import com.productionapp.model.customer.CustomerDetail;
+import com.productionapp.service.customer.CustomerDetailService;
 
 
 @Transactional
@@ -47,7 +47,7 @@ public class CustomerDetailServiceImpl implements CustomerDetailService {
 		// TODO Auto-generated method stub
 		return dao.getCustList();
 	}
-	public List getApplyeTaxOfCustomer(int custID) {
+	public CustomerDetail getApplyeTaxOfCustomer(int custID) {
 		// TODO Auto-generated method stub
 		return dao.getApplyeTaxOfCustomer(custID);
 	}

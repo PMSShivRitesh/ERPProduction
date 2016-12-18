@@ -1,4 +1,4 @@
-package com.productionapp.dchallan.model;
+package com.productionapp.model.dchallan;
 
 import java.util.Date;
 

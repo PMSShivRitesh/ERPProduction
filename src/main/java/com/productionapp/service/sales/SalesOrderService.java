@@ -1,4 +1,4 @@
-package com.productionapp.sales.service;
+package com.productionapp.service.sales;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.productionapp.customer.controller;
+package com.productionapp.controller.customer;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
-import com.productionapp.customer.model.CustomerContactPersions;
-import com.productionapp.customer.service.CustmerContactPersionsService;
+import com.productionapp.model.customer.CustomerContactPersions;
+import com.productionapp.service.customer.CustmerContactPersionsService;
 
 
 

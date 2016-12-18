@@ -1,8 +1,8 @@
-package com.productionapp.customer.dao;
+package com.productionapp.dao.customer;
 
 import java.util.List;
 
-import com.productionapp.customer.model.CustomerContactPersions;
+import com.productionapp.model.customer.CustomerContactPersions;
 
 
 
