@@ -1,4 +1,4 @@
-package com.productionapp.dchallan.daoimpl;
+package com.productionapp.dao.impl.dchallan;
 
 import java.util.Iterator;
 import java.util.List;

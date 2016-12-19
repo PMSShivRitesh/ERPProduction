@@ -62,6 +62,8 @@ xmlns:tx="http://www.springframework.org/schema/tx"
 				<value>com.productionapp.model.dchallan.DchallanItems</value>
 				<value>com.productionapp.model.sales.SalesOrderDetail</value>
 				<value>com.productionapp.model.sales.SalesOrderItems</value>
+				<value>com.productionapp.model.invoice.DChallanInvoiceItemDetail</value>
+				<value>com.productionapp.model.invoice.DChallanInvoiceDetail</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">

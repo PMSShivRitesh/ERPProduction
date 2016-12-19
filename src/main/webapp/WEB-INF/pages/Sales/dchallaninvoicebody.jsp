@@ -12,9 +12,10 @@
 							<!-- <button type="submit" class="btn">
   								<i class="icon-search"></i>
 							</button> -->
-							<div class="btn" onclick="getcustPoNoforInvoice()" title="Search">
-								<i class="icon-search"></i>
-							</div>
+							<div class="span2" align="right">
+							<input type="button" class="btn-save" value="" id="btnsave" onclick="createDchallanInvoice()" title="Create Invoice Of D.Challan" />
+							
+						</div>
 							<!-- <input type="button" class="icon-search"   /> -->
 							
 						</div>
@@ -29,7 +30,7 @@
 							<label class="control-label">Customer Name</label>
 							<div class="controls">
 							
-								<input type="text" class="form-control" name="custName" id="custName" placeholder="" value="${custName}" required="required" onblur="getDChallannolst()"/>
+								<input type="text" class="form-control" name="custName"  id="custName"  value="${custName}" required="required" onblur="getDChallannolst()"/>
 							</div>
 						</div>
 						
@@ -43,7 +44,7 @@
 						<div class="control-group">
 							<label class="control-label">D.Challa No</label>
 							<div class="controls">
-								<select class="form-control"  id="dchallanno" name="dchallanno" onchange="this.form.submit()"></select>
+								<select class="form-control"  id="dchallanno1" name="dchallanno1" onchange="this.form.submit()"></select>
 							</div>
 						</div> 
 						
@@ -57,7 +58,7 @@
 						 <div class="control-group">
 							<label class="control-label">Invoice Date</label>
 							<div class="controls">
-								<input type="text" class="form-control" id="invoiceDate"  name="invoiceDate"   placeholder="" />
+								<input type="text" class="form-control" id="invoiceDate" name="invoiceDate"   placeholder="" />
 							</div>
 						</div>  		
 											
@@ -89,7 +90,7 @@
 						 <div class="control-group">
 							<label class="control-label">D.Challan No</label>
 							<div class="controls">
-									<input type="text" class="form-control" id="invoiceDate" value="${dchallanno}" readonly="readonly" name="invoiceDate"   placeholder="" />
+									<input type="text" class="form-control" id="dchallanNo"  value="${dchallanno}" readonly="readonly" name="dchallanNo"   placeholder="" />
 							</div>
 					
 				
@@ -218,7 +219,7 @@
 						<div class="control-group">
 							<label class="control-label">Basic Total</label>
 							<div class="controls">
-								<input type="text"  name="bTotal" id="bTotal" class="form-control" placeholder="" readonly="readonly" />
+								<input type="text"  name="basicTotal" id="basicTotal" class="form-control"  placeholder="" readonly="readonly" />
 							</div>
 						</div> 
 						<c:choose>
@@ -233,12 +234,7 @@
 						</c:choose>
 					
 						
-						<div class="control-group" id="cstdiv">
-							<label class="control-label">Transport</label>
-							<div class="controls">
-								<input type="text" class="form-control" placeholder=""  onblur="converWordToRs()" />
-							</div>
-						</div> 
+					
 						
 						</div>
 						
@@ -297,7 +293,7 @@
 							<div class="control-group" id="cstdiv">
 							<label class="control-label">Final Amount</label>
 							<div class="controls">
-								<input type="text" class="form-control" readonly="readonly" placeholder="" id="netAmt" name="netAmt" onblur="converWordToRs()" />
+								<input type="text" class="form-control"  readonly="readonly" placeholder="" id="grandTotal" name="grandTotal" onblur="converWordToRs()" />
 							</div>
 						</div> 			
 					</div>
@@ -308,6 +304,7 @@
 	</div>
 	 
 	</div>
+
 	</form>
 	</fieldset>
 </body>
@@ -330,11 +327,11 @@ function getDChallannolst()
 				success: function (data) {
 					List = data
 					
-  					$('#dchallanno').empty();
-					   	$('#dchallanno').append('<option value="">--Select--</option>');
+  					$('#dchallanno1').empty();
+					   	$('#dchallanno1').append('<option value="">--Select--</option>');
  					 for (i in List ) {
  					
-   			 		  $('#dchallanno').append('<option value="' + List[i] + '">' +List[i] + '</option>');
+   			 		  $('#dchallanno1').append('<option value="' + List[i] + '">' +List[i] + '</option>');
   				}
 			 		}
 	
@@ -367,7 +364,7 @@ function calculateTotal()
 		  }
 		
 		
-		 document.getElementById("bTotal").value =sum;
+		 document.getElementById("basicTotal").value =sum;
 		
 		  
 }
@@ -376,9 +373,9 @@ function calculateTotal()
 function calculatevat()
 {
 	calculateTotal();
-	 var vatamt=(parseFloat(document.getElementById("bTotal").value)*0.125);
+	 var vatamt=(parseFloat(document.getElementById("basicTotal").value)*0.125);
 	document.getElementById("vatAmt").value=Math.round(vatamt);
-	document.getElementById("netAmt").value=Math.round(vatamt)+parseFloat(document.getElementById("bTotal").value);
+	document.getElementById("grandTotal").value=Math.round(vatamt)+parseFloat(document.getElementById("basicTotal").value);
 				
 }
 
@@ -388,6 +385,42 @@ $(function() {
 	    $( "#invoiceDate").datepicker("show");	
 
 });
+
+
+function createDchallanInvoice() {
+	
+
+		// get the form values
+	   	var custName = $('#custName').val();
+	    var invoiceDate = $('#invoiceDate').val();
+	    var dchallanNo = $('#dchallanNo').val();
+	    var basicTotal = $('#basicTotal').val();
+	    var grandTotal = $('#grandTotal').val();
+	   
+	  
+	    $.ajax({
+	    type: "POST",
+	    url: "createdchallaninvoice.html",
+	    data: "custName=" + custName + "&invoiceDate=" + invoiceDate+ "&dchallanNo=" + dchallanNo+ "&basicTotal=" + basicTotal+ "&grandTotal=" +grandTotal,
+	    success: function(response){
+	    // we have the response
+	    $('#info').html(response);
+	    getDChallannolst();
+	 
+	    },
+	    error: function(e){
+	    	//alert("Creating New Sales Order")
+	    	//location.href="customerPurchaseOrderInputRequest.html";
+	  
+	    }
+	    });
+	    
+		
+		}
+    
+    
+
+
 
 
 </script>

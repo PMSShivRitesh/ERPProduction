@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.productionapp.dao.invoice.DChallanInvoiceDao;
+import com.productionapp.model.invoice.DChallanInvoiceDetail;
 import com.productionapp.service.invoice.DChallanInvoiceService;
 
 @Service("DChallanInvoiceServiceImpl")
@@ -19,6 +20,10 @@ public class DChallanInvoiceServiceImpl implements DChallanInvoiceService{
 	public List getInvoiceDchallanItems(int custid, int dchallanno) {
 		// TODO Auto-generated method stub
 		return dao.getInvoiceDchallanItems(custid, dchallanno);
+	}
+	public int createDchallanInvoice(DChallanInvoiceDetail dchallaninvoicedetail) {
+		// TODO Auto-generated method stub
+		return dao.createDchallanInvoice(dchallaninvoicedetail);
 	}
 
 }

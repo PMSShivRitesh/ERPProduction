@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.google.gson.Gson;
 import com.productionapp.model.customer.CustomerDetail;
 import com.productionapp.model.dchallan.DchallanDetail;
+import com.productionapp.model.invoice.DChallanInvoiceDetail;
 import com.productionapp.service.customer.CustomerDetailService;
 import com.productionapp.service.dchallan.DchallanService;
 import com.productionapp.service.invoice.DChallanInvoiceService;
@@ -28,6 +31,7 @@ public class DChallanInvoiceController {
 	DchallanService dchallanserive;
 	@Autowired
 	CustomerDetailService custdetailserrvice;
+	
 
 	private Logger loger=Logger.getLogger(DChallanInvoiceController.class);
 	@RequestMapping("/dchallaninvoice")
@@ -40,7 +44,7 @@ public class DChallanInvoiceController {
 	
 	
 	@RequestMapping("/dchallaninvoicedisplay")
-	public ModelAndView dchallaninvoice(@RequestParam(value="custName")String custName,@RequestParam(value="dchallanno")String dchallanno)
+	public ModelAndView dchallaninvoice(@RequestParam(value="custName")String custName,@RequestParam(value="dchallanno1")String dchallanno)
 	{
 		ModelAndView model=new ModelAndView("/Sales/dchallaninvoice");
 		
@@ -54,7 +58,19 @@ public class DChallanInvoiceController {
 		model.addObject("custName",custName);
 		model.addObject("dchallanno",dchallanno);
 		model.addObject("dchllanobj",dchllanobj);
+	
 		return model;
+		
+	}
+	
+	@RequestMapping("/createdchallaninvoice")
+	public String createdchallaninvoice(@ModelAttribute(value="dchallaninvoicedetail") DChallanInvoiceDetail dchallaninvoicedetail){
+		loger.info("Create Dchallan Invoice  "+dchallaninvoicedetail.getCustName());
+		int custId=custservice.getCustId(dchallaninvoicedetail.getCustName());
+		dchallaninvoicedetail.setCustId(custId);
+		int invoiceno=dchallaninvoiceservice.createDchallanInvoice(dchallaninvoicedetail);
+		dchallanserive.updateDchallanStatus(dchallaninvoicedetail.getDchallanNo(), "Closed");
+		return Integer.toString(invoiceno);
 		
 	}
 }
