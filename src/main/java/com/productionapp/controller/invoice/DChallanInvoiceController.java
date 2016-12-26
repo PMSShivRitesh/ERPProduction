@@ -56,6 +56,7 @@ public class DChallanInvoiceController {
 		model.addObject("lst",lst);
 		model.addObject("custdetail",custdetail);
 		model.addObject("custName",custName);
+		
 		model.addObject("dchallanno",dchallanno);
 		model.addObject("dchllanobj",dchllanobj);
 	
@@ -71,6 +72,37 @@ public class DChallanInvoiceController {
 		int invoiceno=dchallaninvoiceservice.createDchallanInvoice(dchallaninvoicedetail);
 		dchallanserive.updateDchallanStatus(dchallaninvoicedetail.getDchallanNo(), "Closed");
 		return Integer.toString(invoiceno);
+		
+	}
+	
+	
+	@RequestMapping(value="/dchallaninvoicedetail")
+	public ModelAndView getDchallanInvoiceDetail(@RequestParam(value="invoiceno")String invoceno){
+		ModelAndView model=new ModelAndView("/Sales/DchallanInvoiceDetail");
+		loger.info("Get Dchallan Invoice Detail");
+		return model;
+		
+	}
+	
+	@RequestMapping(value="/dchallaninvoicenolst")
+	public String getdchallaninvoicenolst(@RequestParam(value="custName")String custName,@RequestParam(value="status")String status){
+			loger.info("Get Invoice No List");
+			int custId=custservice.getCustId(custName);
+			List lst=dchallaninvoiceservice.getInvoiceNolst(custId,status);
+			Gson gson=new Gson();
+			String json=gson.toJson(lst);
+		return json;
+		
+	}
+	
+	@RequestMapping(value="/dchallaninvoiceamt")
+	public String dchallaninvoiceamt(@RequestParam(value="invoiceno")String invoiceno){
+			loger.info("Get Invoice Bill Amount");
+			
+			String amount=dchallaninvoiceservice.getBillAmount(Integer.parseInt(invoiceno));
+			Gson gson=new Gson();
+			String json=gson.toJson(amount);
+		return json;
 		
 	}
 }

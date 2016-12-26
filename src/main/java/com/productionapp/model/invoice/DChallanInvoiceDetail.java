@@ -25,6 +25,9 @@ public class DChallanInvoiceDetail {
 	private String basicTotal;
 	@Column(name="grandTotal")
 	private String grandTotal;
+	@Column(name="status")
+	private String status;
+	
 	@Transient
 	private String custName;
 	
@@ -71,4 +74,11 @@ public class DChallanInvoiceDetail {
 		this.basicTotal = basicTotal;
 	}
 	
+	
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 }

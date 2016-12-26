@@ -5,6 +5,8 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.hibernate.Query;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Projection;
 import org.hibernate.criterion.Projections;
@@ -48,6 +50,7 @@ public class DChallanInvoiceDaoImpl implements DChallanInvoiceDao {
 	
 	public int createDchallanInvoice(DChallanInvoiceDetail dchallaninvoicedetail){
 		loger.info("Create Dchallan Invoice");
+		dchallaninvoicedetail.setStatus("Created");
 		sessionfactory.getCurrentSession().save(dchallaninvoicedetail);
 		int invoiceno=dchallaninvoicedetail.getInvoiceno();
 		List<DChallanInvoiceItemDetail>invoicelst=getInvoiceDchallanItems(dchallaninvoicedetail.getCustId(),dchallaninvoicedetail.getDchallanNo());
@@ -65,6 +68,37 @@ public class DChallanInvoiceDaoImpl implements DChallanInvoiceDao {
 		}
 		return invoiceno;
 		
+	}
+	
+	public List getInvoiceDetailLst(){
+		loger.info("Invoice Detail List");
+		return sessionfactory.getCurrentSession().createCriteria(DChallanInvoiceDetail.class).list();
+	}
+	
+	public List getInvoiceNolst(int custId,String status){
+		loger.info("Get Invoice No List");
+		return sessionfactory.getCurrentSession().createCriteria(DChallanInvoiceDetail.class).setProjection(Projections.property("invoiceno")).add(Restrictions.eq("status", status)).add(Restrictions.eq("custId", custId)).list();
+	}
+	
+	public String getBillAmount(int invoiceno){
+		loger.info("Get Bill Amount");
+		return (String) sessionfactory.getCurrentSession().createCriteria(DChallanInvoiceDetail.class).setProjection(Projections.property("grandTotal")).add(Restrictions.eq("invoiceno", invoiceno)).uniqueResult();
+	}
+	
+	public boolean updateDchallanInvoiceStatus(int invoiceno,String status){
+		loger.info("Update D.challan Invoice");
+		Session session=sessionfactory.openSession();
+		Query query = session.createQuery("update DChallanInvoiceDetail set status =?" +
+				" where invoiceno =?");
+				query.setParameter(0, status);
+				query.setParameter(1, invoiceno);
+					int result = query.executeUpdate();
+		return false;
+	}
+	
+	public List getCustInvoiceDetailLst(int custId){
+		loger.info("get Customer Invoice List");
+		return sessionfactory.getCurrentSession().createCriteria(DChallanInvoiceDetail.class).add(Restrictions.eq("custId", custId)).list();
 	}
 
 }

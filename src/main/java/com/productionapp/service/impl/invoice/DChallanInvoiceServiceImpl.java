@@ -25,5 +25,25 @@ public class DChallanInvoiceServiceImpl implements DChallanInvoiceService{
 		// TODO Auto-generated method stub
 		return dao.createDchallanInvoice(dchallaninvoicedetail);
 	}
+	public List getInvoiceDetailLst() {
+		// TODO Auto-generated method stub
+		return dao.getInvoiceDetailLst();
+	}
+	public List getInvoiceNolst(int custId,String status) {
+		// TODO Auto-generated method stub
+		return dao.getInvoiceNolst(custId,status);
+	}
+	public String getBillAmount(int invoiceno) {
+		// TODO Auto-generated method stub
+		return dao.getBillAmount(invoiceno);
+	}
+	public boolean updateDchallanInvoiceStatus(int invoiceno, String status) {
+		// TODO Auto-generated method stub
+		return dao.updateDchallanInvoiceStatus(invoiceno, status);
+	}
+	public List getCustInvoiceDetailLst(int custId) {
+		// TODO Auto-generated method stub
+		return dao.getCustInvoiceDetailLst(custId);
+	}
 
 }
