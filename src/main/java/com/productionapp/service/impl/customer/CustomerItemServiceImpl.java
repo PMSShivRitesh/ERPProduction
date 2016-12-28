@@ -33,7 +33,7 @@ public class CustomerItemServiceImpl implements CustomerItemService {
 		return dao.getCustomerItemCode(custId);
 	}
 
-	public List getCustItemRate(int custId, String itemCode) {
+	public String getCustItemRate(int custId, String itemCode) {
 		// TODO Auto-generated method stub
 		return dao.getCustItemRate(custId, itemCode);
 	}

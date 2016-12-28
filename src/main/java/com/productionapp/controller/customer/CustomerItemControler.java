@@ -61,15 +61,15 @@ public class CustomerItemControler {
 	}
 	
 	
-	@RequestMapping("/getJsonItemrate")
+	@RequestMapping("/getItemrate")
 	public  String  getJsonItemrate(@RequestParam(value="itemCode")String itemCode ,@RequestParam(value="custName")String custName) throws Exception
 	{
 		loger.info("Get Customer Item Rate");
 		int custId=custservice.getCustId(custName);
-		List lst=custitemservice.getCustItemRate(custId, itemCode);
+		String rate=custitemservice.getCustItemRate(custId, itemCode);
 	
 		Gson gson = new Gson();
-	    String json = gson.toJson(lst); 
+	    String json = gson.toJson(rate); 
 		
 		
 		return json;

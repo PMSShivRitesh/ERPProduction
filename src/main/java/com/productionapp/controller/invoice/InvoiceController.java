@@ -23,5 +23,12 @@ public class InvoiceController {
 			model.addObject("dchallaninvoicelst",dchallaninvoicelst);
 			return model;
 	}
+	
+	@RequestMapping(value="createinvoice")
+	public ModelAndView createinvoice(){
+		loger.info("Craete Normal Invoice");
+		ModelAndView model=new ModelAndView("/Sales/normalinvoice");
+		return model;
+	}
 
 }

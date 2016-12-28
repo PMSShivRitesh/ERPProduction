@@ -33,9 +33,9 @@ public class CustomerItemDaoImpl implements CustomerItemDao{
 		return sessionfactory.getCurrentSession().createCriteria(CustomerItems.class).setProjection(Projections.property("itemCode")).add(Restrictions.eq("custId", custId)).list();
 	}
 	
-	public List getCustItemRate(int custId,String itemCode){
-		loger.info("Get Customer Item Codes");
-		return sessionfactory.getCurrentSession().createCriteria(CustomerItems.class).add(Restrictions.eq("custId", custId)).add(Restrictions.eq("itemCode", itemCode)).list();
+	public String getCustItemRate(int custId,String itemCode){
+		loger.info("Get Customer Item Rate");
+		return (String) sessionfactory.getCurrentSession().createCriteria(CustomerItems.class).setProjection(Projections.property("itemRate")).add(Restrictions.eq("custId", custId)).uniqueResult();
 	}
 	
 
