@@ -1,7 +1,7 @@
 <div ng-app="myApp" ng-controller="noramalinvoiceentryCtrl"> 
-<body>
+
 <fieldset class="fieldset-style">
-<form role="form" action="saveDChallan.html" >
+<form role="form" action="saveInvoice.html" >
 <div class="form-horizontal">
 		<div class="panel panel-default">
 			<div class="panel-heading">
@@ -55,7 +55,7 @@
 						<div class="control-group">
 							<label class="control-label">Invoice Date</label>
 							<div class="controls">
-						<input size="14%" type="text" name="dchallandate" ng-model="e.dchallandate" id="dchallandate" class="form-control" required="required" placeholder="" value=""  />
+						<input size="14%" type="text" name="invoicedate" ng-model="e.invoicedate" id="invoicedate" class="form-control" required="required" placeholder="" value=""  />
 							</div>
 						</div>
 					</div>
@@ -167,7 +167,7 @@
 							<div class="control-group">
 							<label class="control-label">Rate</label>
 							<div class="controls">
-								<input type="text" class="form-control"  required="required" readonly="readonly" name="rate"  ng-model="e.itemQty" id="rate" placeholder=""  onblur="caluculateAmt()"/>
+								<input type="text" class="form-control"  required="required" readonly="readonly" name="rate"  ng-model="e.rate" id="rate" placeholder=""  onblur="caluculateAmt()"/>
 							</div>
 						</div>			
 								
@@ -179,7 +179,7 @@
 			<div class="panel-heading">
 				<div class="container-fluid header-padding">
 					<div class="row-fluid">
-						<div class="span11" align="left">D.Challan Items </div>
+						<div class="span11" align="left">Invoice Items </div>
 							<div class="span1" align="right">
 								<div class="btn" onclick="deleteRowsChecked();" id="deletebtn" title="Remove selected Operation">
 								<i class="icon-trash"></i>
@@ -200,7 +200,8 @@
 								
 								
 								<th>Qty</th>
-							
+								<th>Rate</th>
+								<th>Amount</th>
 								<th>Action</th>
 									
 										</tr>
@@ -209,11 +210,13 @@
 										
 										 <tr ng-repeat="x in names">
   										  <td>{{ x.srno }}</td>
-  										   <td>{{ x.itemcode}}</td>
-  										   <td>{{ x.itemQty}}</td>
+  										   <td>{{ x.itemCode}}</td>
+  										   <td>{{ x.qty}}</td>
+  										    <td>{{ x.rate}}</td>
+  										     <td>{{ x.amount}}</td>
   										   
   										  <td><input  id="chk" value="{{ x.srno }}" type="checkbox"></td>
-  										   <input type="hidden" value="{{ x.dchallanno}}" id="dchallanno"/>   
+  										   <input type="hidden" value="{{ x.invoiceno}}" id="invoiceno"/>   
  										 </tr>
 									</tbody>
 								</table>
@@ -242,7 +245,7 @@ var app = angular.module('myApp', []);
 app.controller('noramalinvoiceentryCtrl', function($scope, $http) {
   $scope.submit = function(values){
 
-	  $http.post("saveDChallan.html",values).then(function (response) {
+	  $http.post("saveInvoice.html",values).then(function (response) {
 		  $scope.names =response.data;
 		  });
 		  
@@ -329,8 +332,8 @@ $(function() {
  });
  
 $(function() {
-	   $( "#dchallandate" ).datepicker();
-	    $( "#dchallandate" ).datepicker("show");	
+	   $( "#invoicedate").datepicker();
+	    $( "#invoicedate").datepicker("show");	
    
  });
 

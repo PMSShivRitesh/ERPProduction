@@ -21,8 +21,27 @@ public class InvoiceDetail {
 	private Date createddate=new Date();
 	@Column(name="pono")
 	private String pono;
+	@Column(name="custId")
+	private int custId;
+	@Column(name="podate")
+	private String podate;
+	@Column(name="status")
+	private String status;
+	
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	public int getInvoiceno() {
 		return invoiceno;
+	}
+	public int getCustId() {
+		return custId;
+	}
+	public void setCustId(int custId) {
+		this.custId = custId;
 	}
 	public void setInvoiceno(int invoiceno) {
 		this.invoiceno = invoiceno;
@@ -51,8 +70,7 @@ public class InvoiceDetail {
 	public void setPodate(String podate) {
 		this.podate = podate;
 	}
-	@Column(name="podate")
-	private String podate;
+	
 	
 	
 
