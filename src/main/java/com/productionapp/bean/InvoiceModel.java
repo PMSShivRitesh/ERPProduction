@@ -12,8 +12,14 @@ public class InvoiceModel {
 	private int itemQty;
 	private String rate;
 	private String amount;
+	private String itemDesc;
 	
-	
+	public String getItemDesc() {
+		return itemDesc;
+	}
+	public void setItemDesc(String itemDesc) {
+		this.itemDesc = itemDesc;
+	}
 	public String getItemcode() {
 		return itemcode;
 	}

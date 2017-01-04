@@ -47,7 +47,7 @@ public class InvoiceController {
 	@RequestMapping("/saveInvoice")
 	public String saveInvoice(@RequestBody InvoiceModel invoicemodel){
 		
-		loger.info("Save Invoice");
+		loger.info("Save Invoice ");
 	
 		int custId=custservice.getCustId(invoicemodel.getCustName());
 		invoicemodel.setCustId(custId);

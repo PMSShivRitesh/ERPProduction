@@ -220,9 +220,6 @@
  										 </tr>
 									</tbody>
 								</table>
-								
-								
-								
 				
 				</div>
 				
@@ -243,8 +240,13 @@
 var app = angular.module('myApp', []);
 
 app.controller('noramalinvoiceentryCtrl', function($scope, $http) {
+	
+	
   $scope.submit = function(values){
-
+	  
+	  values.rate=document.getElementById("rate").value;
+	  values.amount=document.getElementById("amount").value;
+	
 	  $http.post("saveInvoice.html",values).then(function (response) {
 		  $scope.names =response.data;
 		  });

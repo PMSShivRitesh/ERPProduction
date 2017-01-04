@@ -49,13 +49,13 @@ public class InvoiceDaoImpl implements InvoiceDao {
 	
 	
 	public void saveInvoiceItems(InvoiceModel invoicemodel){
-		loger.info("Save Invoice Items");
+		loger.info("Save Invoice Items" );
 		InvoiceItemDetail invoiceitemdetail=new InvoiceItemDetail();
 		invoiceitemdetail.setInvoiceno(Integer.parseInt(invoicemodel.getInvoiceno()));
 		invoiceitemdetail.setItemCode(invoicemodel.getItemcode());
 		invoiceitemdetail.setQty(invoicemodel.getItemQty());
-		invoicemodel.setRate(invoicemodel.getRate());
-		invoicemodel.setAmount(invoicemodel.getAmount());
+		invoiceitemdetail.setRate(invoicemodel.getRate());
+		invoiceitemdetail.setAmount(invoicemodel.getAmount());
 		sessionfactory.getCurrentSession().saveOrUpdate(invoiceitemdetail);
 	}
 	
