@@ -31,6 +31,10 @@ public class InvoiceSerivceImpl implements InvoiceService {
 		// TODO Auto-generated method stub
 		return dao.getInvoiceItemList(invoiceno);
 	}
+	public boolean deleteinvoiceitems(int srno) {
+		// TODO Auto-generated method stub
+		return dao.deleteinvoiceitems(srno);
+	}
 	
 
 }

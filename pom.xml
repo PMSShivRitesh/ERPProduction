@@ -1,11 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.productionapp</groupId>
-  <artifactId>ProductionApplication</artifactId>
+  <groupId>sdfsf</groupId>
+  <artifactId>cvb</artifactId>
   <packaging>war</packaging>
   <version>0.0.1-SNAPSHOT</version>
-  <name>ProductionApplication Maven Webapp</name>
+  <name>cvb Maven Webapp</name>
   <url>http://maven.apache.org</url>
     <properties>
 		<spring.version>4.0.3.RELEASE</spring.version>

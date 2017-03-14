@@ -9,5 +9,6 @@ public interface InvoiceDao {
 	public int createInvoice(InvoiceModel invoicemodel);
 	public void saveInvoiceItems(InvoiceModel invoicemodel);
 	public List<InvoiceItemDetail> getInvoiceItemList(int invoiceno);
+	public boolean deleteinvoiceitems(int srno);
 
 }

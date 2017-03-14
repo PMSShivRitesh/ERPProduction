@@ -10,14 +10,9 @@
 						<div class="span9" align="left">Create Invoice</div>
 						<div class="span3" align="right">
 						
-						
-							
-							
 							<button type="button" class="btn" title="Get Item Code" onclick="getdchallandetail()">
   								<i class="icon-eye-open"></i>
 							</button>
-							
-							
 							
 								<div class="btn" align="left" title="Sales Home" onclick="gethomepage()" >
 							<i class="icon-home"></i>
@@ -102,7 +97,7 @@
 							<button type="button" class="btn" title="Get Item Code" onclick="getcustItemList()">
   								<i class="icon-search"></i>
 							</button>
-							<div class="btn" ng-click="submit(e)"  title="Add Sales Order" >
+							<div class="btn" ng-click="submit(e)"  title="Add Invoive Items" >
 								<i class="icon-plus-sign"></i>
 							</div>
 							
@@ -371,7 +366,7 @@ function deleteRowsChecked() {
 						var srno = input.value;
 						alert(srno);
 						 $.ajax({
-							url : "deletedchallanitems.html",
+							url : "deleteinvoiceitem.html",
 							type : "GET",
 						    data: "srno=" + srno ,
 							

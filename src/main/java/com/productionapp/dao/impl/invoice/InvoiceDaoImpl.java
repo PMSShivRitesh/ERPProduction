@@ -70,5 +70,11 @@ public class InvoiceDaoImpl implements InvoiceDao {
 		return lst;
 	}
 	
+	
+	public boolean deleteinvoiceitems(int srno){
+		loger.info("Delelete Invoice Items");
+		sessionfactory.getCurrentSession().createQuery("delete from invoiceItemDetail where srno='"+srno+"'").executeUpdate();
+		return false;
+	}
 
 }
