@@ -3,6 +3,7 @@
 <title>Home</title>
 <link rel="icon" type="image/png" href="/RMT/images/favicon.ico">
 <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="js/autocompleter/suppnameauto.js"></script>
 <script src="bootstrap/js/bootstrap-dropdown.js"></script>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/login.css" type="text/css">

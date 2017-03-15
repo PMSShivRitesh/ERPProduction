@@ -2,7 +2,8 @@ package com.productionapp.dao;
 
 import java.util.List;
 
-import com.productionapp.model.Item;
+import com.productionapp.model.Item.Item;
+
 
 public interface ItemDao {
 	public boolean crateItem(Item item);

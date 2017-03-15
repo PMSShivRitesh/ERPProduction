@@ -2,7 +2,9 @@ package com.productionapp.service;
 
 import java.util.List;
 
-import com.productionapp.model.Item;
+import com.productionapp.model.Item.Item;
+
+
 
 public interface ItemService {
 	public boolean crateItem(Item item);

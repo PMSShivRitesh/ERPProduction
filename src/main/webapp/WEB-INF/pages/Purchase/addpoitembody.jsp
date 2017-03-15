@@ -43,7 +43,7 @@
 							<label class="control-label">Supplier Name</label>
 							<div class="controls">
 						
-						<input type="text" name="custName"  ng-model="e.custName" id="custName" class="form-control" required="required" placeholder=""/>
+						<input type="text" name="suppName"  ng-model="e.suppName" id="suppName" class="form-control" required="required" placeholder=""/>
 							</div>
 						</div>
 					</div>
@@ -55,7 +55,7 @@
 						<div class="control-group">
 							<label class="control-label">PO Date</label>
 							<div class="controls">
-						<input size="14%" type="text" name="invoicedate" ng-model="e.invoicedate" id="invoicedate" class="form-control" required="required" placeholder="" value=""  />
+							<input size="14%" type="text" name="podate" ng-model="e.podate" id="podate" class="form-control" required="required" placeholder="" value=""  />
 							</div>
 						</div>
 					</div>
@@ -225,7 +225,13 @@ app.controller('noramalinvoiceentryCtrl', function($scope, $http) {
   
 });
 
-
+$(function() {
+    $( "#podate" ).datepicker();
+    $( "#podate" ).datepicker("show");
+ 
+   
+   
+ });
 
 function date()
 {

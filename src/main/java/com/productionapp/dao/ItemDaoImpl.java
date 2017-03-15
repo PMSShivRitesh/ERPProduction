@@ -9,7 +9,8 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.productionapp.model.Item;
+import com.productionapp.model.Item.Item;
+
 
 @Repository("itemdaoimpl")
 public class ItemDaoImpl implements ItemDao {
