@@ -1,4 +1,4 @@
-package com.productionapp.dao;
+package com.productionapp.dao.impl.Item;
 
 import java.util.List;
 
@@ -9,6 +9,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.productionapp.dao.Item.ItemDao;
 import com.productionapp.model.Item.Item;
 
 

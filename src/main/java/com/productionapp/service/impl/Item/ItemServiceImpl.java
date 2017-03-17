@@ -1,4 +1,4 @@
-package com.productionapp.service;
+package com.productionapp.service.impl.Item;
 
 import java.util.List;
 
@@ -6,8 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.productionapp.dao.ItemDao;
+import com.productionapp.dao.Item.ItemDao;
 import com.productionapp.model.Item.Item;
+import com.productionapp.service.Item.ItemService;
 
 
 @Transactional

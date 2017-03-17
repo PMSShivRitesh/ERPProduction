@@ -12,7 +12,7 @@
 		$("#idsuccess").hide();
 		</script>
 
-<form role="form" name="fname"  id="fname" action="addrmitemstock.html" method="post" >
+<form role="form" name="fname"  id="fname" action="addrmitem.html" method="post" >
 <div class="form-horizontal">
 		<div class="panel panel-default">
 			<div class="panel-heading">
@@ -40,9 +40,9 @@
 					
 					
 					<div class="control-group">
-							<label class="control-label">Item Code</label>
+							<label class="control-label">RM Item Code</label>
 							<div class="controls">
-								<input type="text" class="form-control" id="itemcode" name="itemcode" 
+								<input type="text" class="form-control" id="rmitemcode" name="rmitemcode 
 							 required="required"/>
 							</div>
 						</div>
@@ -51,8 +51,17 @@
 						<div class="control-group">
 							<label class="control-label">Location</label>
 							<div class="controls">
-								<input type="text" class="form-control" id="rmitemloc" name="rmitemloc" 
+								<input type="text" class="form-control" id="rmitemLoc" name="rmitemLoc" 
 								class="search"  required="required"/>
+							</div>
+						</div>
+						
+						
+						
+						<div class="control-group">
+							<label class="control-label">In Stock</label>
+						<div class="controls">
+								<input type="text" class="form-control" id="inStock" name="inStock"/>
 							</div>
 						</div>
 					
@@ -63,11 +72,20 @@
 					<div class="firstquad">
 					
 					<div class="control-group">
-							<label class="control-label">RM Item Code</label>
+							<label class="control-label">RM Item Name</label>
 						<div class="controls">
-								<input type="text" class="form-control" id="rmitemcode" name="rmitemcode"/>
+								<input type="text" class="form-control" id="rmitemname" name="rmitemname"/>
 							</div>
 						</div>
+						
+						
+						<div class="control-group">
+							<label class="control-label">Min Stock</label>
+						<div class="controls">
+								<input type="text" class="form-control" id="minStock" name="minStock"/>
+							</div>
+						</div>
+						
 						
 						</div>
 						
@@ -77,10 +95,19 @@
 						
 					
 						<div class="control-group">
-							<label class="control-label">Qty</label>
+							<label class="control-label">RM Item Desc</label>
 						<div class="controls">
 								<input type="text" class="form-control" id="rmstockQty" name="rmstockQty" 
 								class="search"  required="required"/>
+							</div>
+						</div>
+						
+						
+						
+						<div class="control-group">
+							<label class="control-label">Max Stock</label>
+						<div class="controls">
+								<input type="text" class="form-control" id="maxStock" name="maxStock"/>
 							</div>
 						</div>
 											

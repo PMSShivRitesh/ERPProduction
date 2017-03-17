@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
-import com.productionapp.dao.ItemDao;
+import com.productionapp.dao.Item.ItemDao;
 import com.productionapp.model.Item.Item;
-import com.productionapp.service.ItemService;
+import com.productionapp.service.Item.ItemService;
 
 @RestController
 public class ItemControler {

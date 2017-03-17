@@ -11,12 +11,13 @@ import java.sql.SQLException;
 import java.util.*;
 import com.google.gson.Gson;
 import com.productionapp.model.RMItem.RMItem;
+import com.productionapp.service.RMItem.RMItemService;
 
 
 @Controller
 public class RMItemControler {
 	@Autowired
-	//InventoryRmService inventoryrmservice;
+	RMItemService inventoryrmservice;
 	
 	@RequestMapping("/rmstock")
 	public ModelAndView getrmstockform()
@@ -30,7 +31,7 @@ public class RMItemControler {
 	
 	
 
-	/*@RequestMapping("/addrmitemstockRequest")
+	@RequestMapping("/addrmitemstock")
 	public ModelAndView additemstockdetailform()
 	{
 			ModelAndView model=new ModelAndView("/Inventory/addrmitemstock");
@@ -39,19 +40,19 @@ public class RMItemControler {
 		
 	}
 
-	@RequestMapping("/addrmitemstock")
-	public ModelAndView additemdetailform(@ModelAttribute("mobj")InventoryRMModel mobj)
+	@RequestMapping("/addrmitem")
+	public ModelAndView additemdetailform(@ModelAttribute("mobj")RMItem mobj)
 	{
-			inventoryrmservice.addrmitemstock(mobj);
-			ModelAndView model=new ModelAndView("/Inventory/rmstockdetail");
-			List<InventoryRMModel>allrmstocklst=inventoryrmservice.getallRMItemStock();
-			model.addObject("allrmstocklst",allrmstocklst);
+			inventoryrmservice.addRmItem(mobj);
+			ModelAndView model=new ModelAndView("/Inventory/addrmitemstock");
+			//List<InventoryRMModel>allrmstocklst=inventoryrmservice.getallRMItemStock();
+		//	model.addObject("allrmstocklst",allrmstocklst);
 			
 			return model;
 		
 	}
 	
-	
+	/*
 	@RequestMapping("/getrminventoryitemcodeforpo")
 	public @ResponseBody String getrminventoryitemcodeforp() throws SQLException
 	{

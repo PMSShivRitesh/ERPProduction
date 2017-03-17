@@ -131,7 +131,7 @@
 	
 	function addrmstock()
 	{
-		location.href="../ProductionErp/addrmitemstockRequest.html"
+		location.href="addrmitemstock.html"
 	}
 	
 	
