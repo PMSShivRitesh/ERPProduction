@@ -26,56 +26,12 @@
 				</div>
 			</div>
 
-			<div class="container-fluid panel-body">
-				<div class="row-fluid search-align">
-					<div class="firstquad">
-						
-						
-						
-						</div>
-						
-					<!-- 2 Column -->	
-					
-					<div class="firstquad">
-						
-						<div class="controls">
-								
-							</div>
-						
-						</div>
-						
-						<!-- 3 Column -->
-						
-					<div class="firstquad">
-							<div class="control-group">
-								<label class="control-label">RM Item Code</label>
-								<div class="controls"><input type="text" class="form-control" name="processName" id="processName" value="${pname}"  /></div>
-								
-							</div>	
-											
-					</div>
-				</div>
-			</div>
 		</div>
 		</div>
 	 </form> 
 	 
 
-	 
-	 <div class="panel panel-default" id="idresults">
-			<div class="panel-heading">
-				<div class="container-fluid header-padding">
-					<div class="row-fluid">
-						<div class="span9" align="left">Stock Detail<!-- Project Task List --></div>
-						<div class="span3" align="right">
-						
-							
-							
-						
-						</div>
-					</div>
-				</div>
-			</div>
+	
 
 			<div class="panel-body">
 			
@@ -85,15 +41,24 @@
 						<tr bgcolor="#84939f">
 							<th Style="width:5%">Sr.No</th>
 							<th>RM Item Code</th>
-							<th>Stock Qty</th>
+							<th>RM Item Name</th>
+							<th >RM Item Desc</th>
+							
+							<th >Min Stock</th>
+							
+							<th >Max Stock</th>
+							
+							<th>In Stock</th>
+							
 							<th >Location</th>
+							
 							
 						
 						</tr>
 									</thead>
 									<tbody style="font-size: 12px;">
 										
-											<c:if test="${not emptyallrmstocklst}">
+											<c:if test="${not empty allrmstocklst}">
 												<% int i=0;
 												%>
              		           					<c:forEach var="listValue" items="${allrmstocklst}">
@@ -109,8 +74,13 @@
              		           					%>
              		           						<td><%=i %></td>
              		           						<td>${listValue.rmitemcode}</td>
-             		           						<td>${listValue.rmstockQty}</td>
-             		           						<td>${listValue.rmitemloc}</td>
+             		           						<td>${listValue.rmitemname}</td>
+             		           						<td>${listValue.rmitemdesc}</td>
+             		           						<td>${listValue.minStock}</td>
+             		           						<td>${listValue.maxStock}</td>
+             		           						<td>${listValue.inStock}</td>
+             		           						<td>${listValue.rmitemLoc}</td>
+             		           					
              		           						
              		           					</tr>
 												</c:forEach>

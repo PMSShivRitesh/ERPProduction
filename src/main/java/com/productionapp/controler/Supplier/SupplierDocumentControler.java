@@ -1,4 +1,4 @@
-package com.productionapp.controler;
+package com.productionapp.controler.Supplier;
 
 import java.util.List;
 import java.util.Map;

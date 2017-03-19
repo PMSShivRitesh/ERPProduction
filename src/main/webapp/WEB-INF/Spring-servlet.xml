@@ -57,8 +57,8 @@ xmlns:tx="http://www.springframework.org/schema/tx"
 				<value>com.productionapp.model.SupplierDetail</value>
 				<value>com.productionapp.model.SupplierConatactPersions</value>
 				<value>com.productionapp.model.SupplierDocuments</value>
-				<value>com.productionapp.model.Item.Item</value>
-				<value>com.productionapp.model.RMItem.RMItem</value>
+				<value>com.productionapp.model.Inventory.Item</value>
+				<value>com.productionapp.model.Inventory.RMItem</value>
 				<value>com.productionapp.model.dchallan.DchallanDetail</value>
 				<value>com.productionapp.model.dchallan.DchallanItems</value>
 				<value>com.productionapp.model.sales.SalesOrderDetail</value>

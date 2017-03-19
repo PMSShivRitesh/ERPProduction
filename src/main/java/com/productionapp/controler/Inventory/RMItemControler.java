@@ -1,4 +1,4 @@
-package com.productionapp.controler.RMItem;
+package com.productionapp.controler.Inventory;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.sql.SQLException;
 import java.util.*;
 import com.google.gson.Gson;
-import com.productionapp.model.RMItem.RMItem;
+import com.productionapp.model.Inventory.RMItem;
 import com.productionapp.service.RMItem.RMItemService;
 
 
@@ -23,7 +23,7 @@ public class RMItemControler {
 	public ModelAndView getrmstockform()
 	{
 			ModelAndView model=new ModelAndView("/Inventory/rmstockdetail");
-			List<RMItem>allrmstocklst=null;//inventoryrmservice.getallRMItemStock();
+			List<RMItem>allrmstocklst=inventoryrmservice.getRmDetailList();
 			model.addObject("allrmstocklst",allrmstocklst);
 			return model;
 		

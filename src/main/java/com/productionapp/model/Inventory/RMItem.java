@@ -1,4 +1,4 @@
-package com.productionapp.model.RMItem;
+package com.productionapp.model.Inventory;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

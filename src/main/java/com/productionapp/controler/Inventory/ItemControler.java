@@ -1,4 +1,4 @@
-package com.productionapp.controler.Item;
+package com.productionapp.controler.Inventory;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
 import com.productionapp.dao.Item.ItemDao;
-import com.productionapp.model.Item.Item;
+import com.productionapp.model.Inventory.Item;
 import com.productionapp.service.Item.ItemService;
 
 @RestController

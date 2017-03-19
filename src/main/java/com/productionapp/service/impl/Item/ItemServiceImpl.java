@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.productionapp.dao.Item.ItemDao;
-import com.productionapp.model.Item.Item;
+import com.productionapp.model.Inventory.Item;
 import com.productionapp.service.Item.ItemService;
 
 

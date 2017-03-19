@@ -2,7 +2,7 @@ package com.productionapp.service.Item;
 
 import java.util.List;
 
-import com.productionapp.model.Item.Item;
+import com.productionapp.model.Inventory.Item;
 
 
 

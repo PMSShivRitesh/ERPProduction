@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.productionapp.dao.Item.ItemDao;
-import com.productionapp.model.Item.Item;
+import com.productionapp.model.Inventory.Item;
 
 
 @Repository("itemdaoimpl")
