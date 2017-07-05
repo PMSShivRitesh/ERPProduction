@@ -1,26 +1,26 @@
 package com.productionapp.controller.customer;
 
+import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
-import org.apache.log4j.pattern.LogEvent;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
+
 import com.productionapp.model.customer.CustomerDocuments;
 import com.productionapp.service.DocumentService;
 import com.productionapp.service.customer.CustomerDocumentService;
@@ -39,6 +39,7 @@ public class CustomerDocumentControler {
 	public ModelAndView getCustomerDocumentForm(@RequestParam(value="custId") String custId) 
 	{
 		loger.info("Get Form document register");
+		
 		ModelAndView model=new ModelAndView("/Customer/addDocumets");
 		Map<String,String> documentNamelst=docserivce.getDocumentsListForDropdown();
 		model.addObject("documentNamelst",documentNamelst);
@@ -72,6 +73,7 @@ public class CustomerDocumentControler {
 	{
 		loger.info("add customer document detail");
 		ModelAndView model;
+
 		
 		//if(custdocmodelobj.getCustId()!=0){
 			//	model=new ModelAndView("/Customer/CustomerEditRegisterNumbersRequest");
@@ -79,8 +81,41 @@ public class CustomerDocumentControler {
 			model=new ModelAndView("/Customer/addDocumets");
 		//	}
 			
+			MultipartFile file = custdocmodelobj.getFile();
+			
+			if (!file.isEmpty()) {
+				try {
+					byte[] bytes = file.getBytes();
+
+					// Creating the directory to store file
+					Path newDir = Paths.get("E:\\TestCopy");
+					String rootPath = newDir.toString();
+					File dir = new File(rootPath + File.separator + "tmpFiles");
+					if (!dir.exists())
+						dir.mkdirs();
+
+					// Create the file on server
+					File serverFile = new File(dir.getAbsolutePath()
+							+ File.separator);
+					BufferedOutputStream stream = new BufferedOutputStream(
+							new FileOutputStream(serverFile));
+					stream.write(bytes);
+					stream.close();
+					custdocmodelobj.setDoclocation(serverFile.getAbsolutePath());
+					loger.info("Server File Location="+ serverFile.getAbsolutePath());
+
+						System.out.println("test *******************************************************"+serverFile.getAbsolutePath());
+				} catch (Exception e) {
+					 e.printStackTrace();
+				}
+			} else {
+				System.out.println("You failed to upload because the file was empty.");
+			}
 			
 			
+			
+			
+			//custdocmodelobj.setUplodfile(file.getBytes());
 			
 			/* InputStream inputStream = null;
 			 OutputStream outputStream = null;
@@ -130,6 +165,7 @@ public class CustomerDocumentControler {
 		custdocservice.saveCustomerDocumentsDetail(custdocmodelobj);
 		List<CustomerDocuments> custdoclst=new LinkedList<CustomerDocuments>();
 		custdoclst=custdocservice.getCustomerDocDetail(custdocmodelobj.getCustId());
+		
 		model.addObject("custdoclst",custdoclst);
 		
 		model.addObject("custId",custdocmodelobj.getCustId());
@@ -145,6 +181,8 @@ public class CustomerDocumentControler {
 	 public String deletedocument(@RequestParam(value="custDocId")String custDocId) 
 	{
 		boolean flag=false;
+		
+		System.out.println("test *******************************************************"+custDocId);
 		flag=custdocservice.deleteCustomerDocuments(Integer.parseInt(custDocId));
 			return "deleted";
 	  

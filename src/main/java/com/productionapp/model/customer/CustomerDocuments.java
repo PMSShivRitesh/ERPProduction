@@ -1,6 +1,7 @@
 package com.productionapp.model.customer;
 
-import java.io.File;
+
+import java.sql.Blob;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,8 +13,10 @@ import javax.persistence.Transient;
 
 import org.springframework.web.multipart.MultipartFile;
 
+
+
 @Entity
-@Table(name="CustomerDocuments")
+@Table(name="customerdocuments")
 public class CustomerDocuments {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -29,8 +32,17 @@ public class CustomerDocuments {
 	private String wef;
 	@Column(name="pvisible")
 	private String pvisible;
-	@Column(name="docloc")
-	private String docloc;
+	@Column(name="doclocation")
+	private String doclocation;
+
+	public String getDoclocation() {
+		return doclocation;
+	}
+
+	public void setDoclocation(String doclocation) {
+		this.doclocation = doclocation;
+	}
+
 	@Transient
 	private MultipartFile file;
 	
@@ -49,12 +61,7 @@ public class CustomerDocuments {
 	public void setCustDocId(int custDocId) {
 		this.custDocId = custDocId;
 	}
-	public int getCustId() {
-		return custId;
-	}
-	public void setCustId(int custId) {
-		this.custId = custId;
-	}
+	
 	public String getDocname() {
 		return docname;
 	}
@@ -79,12 +86,14 @@ public class CustomerDocuments {
 	public void setPvisible(String pvisible) {
 		this.pvisible = pvisible;
 	}
-	public String getDocloc() {
-		return docloc;
-	}
-	public void setDocloc(String docloc) {
-		this.docloc = docloc;
-	}
 	
+	public int getCustId() {
+		return custId;
+	}
+
+	public void setCustId(int custId) {
+		this.custId = custId;
+	}
+
 	
 }

@@ -39,16 +39,14 @@ public class CustomerDetail {
 	private String custemail;
 	@Column(name="custcontactno")
 	private String custcontactno;
+	@Column(name="mobilenumber")
+	private String mobilenumber;
+	@Column(name="whatappmobile")
+	private String whatappmobile;
+	
 	@Column(name="custgst")
 	private String custgst;
-	@Column(name="custcst")
-	private String custcst;
-	@Column(name="custvat")
-	private String custvat;
-	@Column(name="custexcise")
-	private String custexcise;
-	@Column(name="custservicetax")
-	private String custservicetax;
+	
 	public int getCustId() {
 		return custId;
 	}
@@ -127,30 +125,19 @@ public class CustomerDetail {
 	public void setCustgst(String custgst) {
 		this.custgst = custgst;
 	}
-	public String getCustcst() {
-		return custcst;
+	public String getMobilenumber() {
+		return mobilenumber;
 	}
-	public void setCustcst(String custcst) {
-		this.custcst = custcst;
+	public void setMobilenumber(String mobilenumber) {
+		this.mobilenumber = mobilenumber;
 	}
-	public String getCustvat() {
-		return custvat;
+	public String getWhatappmobile() {
+		return whatappmobile;
 	}
-	public void setCustvat(String custvat) {
-		this.custvat = custvat;
+	public void setWhatappmobile(String whatappmobile) {
+		this.whatappmobile = whatappmobile;
 	}
-	public String getCustexcise() {
-		return custexcise;
-	}
-	public void setCustexcise(String custexcise) {
-		this.custexcise = custexcise;
-	}
-	public String getCustservicetax() {
-		return custservicetax;
-	}
-	public void setCustservicetax(String custservicetax) {
-		this.custservicetax = custservicetax;
-	}
+	
 	
 
 }

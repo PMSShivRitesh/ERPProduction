@@ -167,78 +167,8 @@
 							</c:choose>
 							</div>
 						</div>
-						 <div class="control-group">
-							<label class="control-label">Excise Apply</label>
-							<div class="controls">
-								<c:choose>
-									<c:when test="${customerdetail.custexcise=='YES'}">
-										<input type="checkbox" checked name="custexcise"
-											id="custexcise">
-									</c:when>
-									<c:otherwise>
-										<input type="checkbox" name="custexcise" id="custexcise"
-										>
-									</c:otherwise>
-								</c:choose>
-							</div>
-						</div>
-						
 						
 						</div>
-
-					<div class="firstquad">
-						<div class="control-group">
-							<label class="control-label">CST Apply</label>
-							<div class="controls">
-								<c:choose>
-								<c:when test="${customerdetail.custcst=='YES'}">
-     	 								<input type="checkbox" checked name="custcst" id="custcst" >
-      							</c:when>    
-  						  		<c:otherwise>
-    								  <input type="checkbox" name="custcst" id="custcst"  >
-  							 	</c:otherwise>
-								</c:choose>
-							</div>
-						</div>
-						
-						 <div class="control-group">
-							<label class="control-label">Service Tax Apply</label>
-							<div class="controls">
-								<c:choose>
-							<c:when test="${customerdetail.custservicetax=='YES'}">
-     	 							<input type="checkbox" checked name="custservicetax" id="custservicetax" >
-      							</c:when>    
-  						  		<c:otherwise>
-    								  <input type="checkbox" name="custservicetax" id="custservicetax" >
-  							 	</c:otherwise>
-						</c:choose>
-							</div>
-						</div>
-					</div>
-					
-					<div class="firstquad">
-						<div class="control-group">
-							<label class="control-label">VAT Apply</label>
-							<div class="controls">
-								<c:choose>
-								<c:when test="${customerdetail.custvat=='YES'}">
-     	 							<input type="checkbox" checked name="custvat" id="custvat" >
-      							</c:when>    
-  						  		<c:otherwise>
-    								  <input type="checkbox" name="custvat" id="custvat" >
-  							 	</c:otherwise>
-								</c:choose>
-							</div>
-						</div>
-						
-						
-						<div class="control-group">
-							<label class="control-label"></label>
-							<div class="controls">
-								
-							</div>
-						</div>
-					</div>
 				</div>
 				</div>
 		</div>

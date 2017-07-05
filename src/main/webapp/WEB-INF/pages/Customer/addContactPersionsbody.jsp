@@ -1,10 +1,22 @@
 <fieldset class="fieldset-style">
 <div class="alert alert-success" id="idsuccess">
 			<button type="button" class="close" data-dismiss="alert">&times;</button>
+			<i class="icon-thumbs-up"></i>Record  Delete Successfully 
+		</div>
+		<div class="alert alert-success" id="idsuccess1">
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+			<i class="icon-thumbs-up"></i> Details Added
+		</div>
+		<div class="alert alert-success" id="idsuccess2">
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
 			<i class="icon-thumbs-up"></i>
 		</div>
+				
 		<script type="text/javascript">
 		$("#idsuccess").hide();
+	
+		$("#idsuccess1").show();		
+		$("#idsuccess2").hide();
 		</script>
 <form action="addCustomerContactPersions.html" method="post">
 <input type="hidden" name="custId"  id="custId" value="${custId}">
@@ -40,7 +52,7 @@
 				<div class="row-fluid search-align">
 					<div class="firstquad">
 						<div class="control-group">
-							<label class="control-label">Persion Name</label>
+							<label class="control-label">Person Name</label>
 							<div class="controls">
 								<input type="text" class="form-control" name="cpersionname" id="cpersionname" placeholder="" onblur="checkcontackpersionexist()" required="required"/>
 							</div>
@@ -279,15 +291,17 @@ function checkcontackpersionexist() {
     success: function(data){
     	if(data=='"1"'){
    		 $('#idsuccess').hide();
+		 $("#idsuccess1").hide();
+		 $("#idsuccess2").hide();
 			}
    else
    	{
    		 $('#contactPersionName').val('');
-   	   $('#idsuccess').show();
+   	   $('#idsuccess2').show();
    	
    	
    //$("#idsuccess").show();
-   $("#idsuccess").html("<button type='button' class='close' data-dismiss='alert' onclick='hide();'>&times;</button><i class='icon-thumbs-up'></i>"+
+   $("#idsuccess2").html("<button type='button' class='close' data-dismiss='alert' onclick='hide();'>&times;</button><i class='icon-thumbs-up'></i>"+
    		data);
    
   
@@ -313,7 +327,7 @@ function getNextForm()
 function deleteRowsChecked() {
 	var check1 = 0;
 	var table = document.getElementById("idtable");
-	
+
 	for ( var rowi = table.rows.length; rowi--;) {
 		var row = table.rows[rowi];
 		var inputs = row.getElementsByTagName('input');
@@ -328,8 +342,10 @@ function deleteRowsChecked() {
 	if (check1 == 0) {
 		$('#iderror').show();
 		$('#idsuccess').hide();
+		$("#idsuccess1").hide();
+		$("#idsuccess2").hide();
 	} else {
-		var result = confirm("Are you sure you want to delete selected records?");
+		var result = confirm("Are You Sure You Want To Delete Selected Records?");
 		if (result) {
 			var table = document.getElementById("idtable");
 			for ( var rowi = table.rows.length; rowi--;) {

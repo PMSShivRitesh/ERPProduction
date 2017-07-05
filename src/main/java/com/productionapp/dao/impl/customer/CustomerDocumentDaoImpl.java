@@ -23,12 +23,16 @@ public class CustomerDocumentDaoImpl implements CustomerDocumentDao {
 	
 	public boolean saveCustomerDocumentsDetail(CustomerDocuments custdocmodel){
 		loger.info("Save Customer Document Details");
+		
+		
 		sessionfactory.getCurrentSession().saveOrUpdate(custdocmodel);
 		return false;
 	}
 	
 	public List<CustomerDocuments>getCustomerDocDetail(int custid){
 		loger.info("Get Customer Document Details");
+		
+		
 		return sessionfactory.getCurrentSession().createCriteria(CustomerDocuments.class).add(Restrictions.eq("custId", custid)).list();
 		
 	}
@@ -36,7 +40,8 @@ public class CustomerDocumentDaoImpl implements CustomerDocumentDao {
 	public boolean deleteCustomerDocuments(int docid)
 	{
 		loger.info("Delete customer documents");
-		sessionfactory.getCurrentSession().createQuery("delete from CustomerDocuments where custDocId='"+docid+"'");
+		System.out.println("test *******************************************************"+docid);
+		sessionfactory.getCurrentSession().createQuery("delete from CustomerDocuments where custDocId='"+docid+"'").executeUpdate();
 		return false;
 	}
 	

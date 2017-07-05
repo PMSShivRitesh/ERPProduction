@@ -100,7 +100,11 @@ xmlns:tx="http://www.springframework.org/schema/tx"
 </property>
 </bean>
    -->
-  
+  <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+
+		 <!-- setting maximum upload size -->
+		<property name="maxUploadSize" value="100000" />
+   </bean>
 
 
  <mvc:view-controller view-name="login/login" path="/index.html"/>

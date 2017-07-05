@@ -63,7 +63,7 @@ public class CustomerDetailControler {
 	        if(flag){
 	        
 	        	//cpservice.savecustProcessRate(custprocessrateobj);
-	            returnText = "Customer Exists " ;
+	            returnText = "Customer Exists :- " +custname ;
 	        }else{
 	            returnText = "1";
 	        }
@@ -148,7 +148,11 @@ public class CustomerDetailControler {
 	{
 		loger.info("Get Custgomer All Detail");
 		ModelAndView model = new ModelAndView("/Customer/SearchCustomer");
+		
+		
+		
 		int custId=custservice.getCustId(custName);
+
 		CustomerDetail customerdetail=custservice.getCustomerDetail(custId);
 		List<CustomerContactPersions> custconatctlst=custcontactpeopleservice.getCustomerContactPersionList(custId);
 		List<CustomerDocuments>customerregnolst=custdocservice.getCustomerDocDetail(custId);

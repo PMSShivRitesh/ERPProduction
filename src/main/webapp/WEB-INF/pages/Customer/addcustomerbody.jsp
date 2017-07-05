@@ -7,6 +7,11 @@
 		<script type="text/javascript">
 		$("#idsuccess").hide();
 		</script>
+		
+		
+		
+		
+		
 <form role="form" action="saveCustomerDetail.html" method="post">
 <div class="form-horizontal">
 		<div class="panel panel-default">
@@ -28,15 +33,22 @@
 				<div class="row-fluid search-align">
 					<div class="firstquad">
 						<div class="control-group">
-							<label class="control-label">Customer name</label>
+							<label class="control-label">Customer Name</label>
 							<div class="controls">
-								<input type="text" class="form-control" required="required" name="custName" id="custName" placeholder="" onblur="checkcutomer()" />
+								<input type="text" class="form-control"  name="custName" id="custName" placeholder="" onblur="checkcutomer()"   required="required"/>
 							</div>
 						</div>
+						
+					<div class="control-group">
+							<label class="control-label">Short Name</label>
+							<div class="controls">
+								<input type="text" class="form-control" name="custshortcutname" placeholder=""/>
+							</div>
+					</div>
 					 <div class="control-group">
 							<label class="control-label">Address</label>
 							<div class="controls">
-								<textarea type="text" rows="6" class="form-control" name="custAddress" required="required" placeholder=""></textarea>
+								<textarea type="text" rows="5" class="form-control" name="custAddress" required="required" placeholder=""></textarea>
 							</div>
 						</div>
 						
@@ -46,12 +58,7 @@
 								<input type="checkbox" name="custgst" value="YES"> 
 							</div>
 						</div>
-						<div class="control-group">
-							<label class="control-label">Excise Apply</label>
-							<div class="controls">
-								<input type="checkbox" name="custexcise" value="YES"> 
-							</div>
-						</div>
+						
 						<!--<div class="control-group">
 							<label class="control-label">Raw Material Rate</label>
 							<div class="controls">
@@ -68,17 +75,11 @@
 						
 
 
-					<div class="control-group">
-							<label class="control-label">Short Name</label>
-							<div class="controls">
-								<input type="text" class="form-control" name="custshortcutname" required="required" placeholder="" />
-							</div>
-					</div>
 						
 						 <div class="control-group">
 							<label class="control-label">Select Country</label>
 							<div class="controls">
-								<select class="form-control" name="custCountry" id="countryName" onchange="getStateLst()">
+								<select class="form-control" name="custCountry" id="countryName"  onchange="getStateLst()"  required="required">
 										<option>--Select Country--</option>
 											<c:if test="${not empty countryllst}">
              		           					<c:forEach var="listValue" items="${countryllst}">
@@ -88,16 +89,37 @@
 										</select>
 							</div>
 						</div>
+						 <div class="control-group">
+							<label class="control-label">Select State</label>
+							<div class="controls">
+								<select class="form-control" name="custstate" id="stateName" onchange="getDistrictLst()" required="required">
+											<option></option>
+											</select>
+							</div>
+						</div>
 						
 						<div class="control-group">
 							<label class="control-label">Select District</label>
 							<div class="controls">
-								<select class="form-control" name="custdistrict" id="districtName" onchange="getTalukaLst()">
+								<select class="form-control" name="custdistrict" id="districtName" required="required" onchange="getTalukaLst()">
+											<option></option>
+										</select>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label">Taluka</label>
+							<div class="controls">
+									<select class="form-control" name="custtaluka" id="talukaName" required="required">
 											<option></option>
 										</select>
 							</div>
 						</div>
 
+						<div class="control-group">
+							<label class="control-label"></label>
+							<div class="controls">
+							</div>
+						</div>
 						<div class="control-group">
 							<label class="control-label">Zip Code</label>
 							<div class="controls">
@@ -105,26 +127,10 @@
 							</div>
 						</div>
 						
-							<div class="control-group">
-							<label class="control-label">Landline No.</label>
-							<div class="controls">
-								<input type="text" class="form-control"  name="custcontactno" placeholder="" />
-							</div>
-						</div> 
+							
 						
-						<div class="control-group">
-							<label class="control-label">VAT</label>
-							<div class="controls">
-								<input type="checkbox" name="custvat" value="YES"> 
-							</div>
-						</div> 
 						
-						<div class="control-group">
-							<label class="control-label">Service Tax Apply</label>
-							<div class="controls">
-								<input type="checkbox" value="YES" name="custservicetax">  
-							</div>
-						</div> 
+						
 						
 						</div>
 						
@@ -134,24 +140,25 @@
 						<div class="control-group">
 							<label class="control-label">Email</label>
 							<div class="controls">
-								<input type="email" class="form-control" name="custemail" placeholder="" />
-							</div>
-						</div>
-						
-						 <div class="control-group">
-							<label class="control-label">Select State</label>
-							<div class="controls">
-								<select class="form-control" name="custstate" id="stateName" onchange="getDistrictLst()">
-											<option></option>
-											</select>
+								<input type="email" class="form-control" name="custemail" placeholder="" required="required" />
 							</div>
 						</div>
 						<div class="control-group">
-							<label class="control-label">Taluka</label>
+							<label class="control-label">Landline No.</label>
 							<div class="controls">
-									<select class="form-control" name="custtaluka" id="talukaName">
-											<option></option>
-										</select>
+								<input type="text" class="form-control"  name="custcontactno"  placeholder="" />
+							</div>
+						</div> 
+						<div class="control-group">
+							<label class="control-label">Mobile Number</label>
+							<div class="controls">
+								<input type="text" class="form-control" name="mobilenumber" placeholder="" />
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label">WhatsApp Mob.No.</label>
+							<div class="controls">
+								<input type="text" class="form-control" name="whatappmobile" placeholder="" />
 							</div>
 						</div>
 						<div class="control-group">
@@ -160,27 +167,14 @@
 								<input type="text" class="form-control" name="custwebsite" placeholder="" />
 							</div>
 						</div>
+						
 						<div class="control-group">
 							<label class="control-label"></label>
 							<div class="controls">
 							</div>
 						</div>
-						<div class="control-group">
-							<label class="control-label"></label>
-							<div class="controls">
-							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label"></label>
-							<div class="controls">
-							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label">CST Apply</label>
-							<div class="controls">
-								<input type="checkbox" name="custcst" value="YES" >
-							</div>
-						</div>
+					
+						
 						
 											
 					</div>
@@ -286,7 +280,7 @@ function getDistrictLst()
 					
 					
   					$('#districtName').empty();
-					   	$('#districtName').append('<option value="">Select Districta</option>');
+					   	$('#districtName').append('<option value="">Select District</option>');
  					 for (i in stateList) {
  						
    			   $('#districtName').append('<option value="' + stateList[i].districtId + '">' +stateList[i].districtName + '</option>');

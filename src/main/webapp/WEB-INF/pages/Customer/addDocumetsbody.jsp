@@ -6,7 +6,7 @@
 		<script type="text/javascript">
 		$("#idsuccess").hide();
 		</script>
-<form role="form" action="addCustomerRegisterNo.html" method="post" enctype="multipart/form-data" >
+<form role="form" action="addCustomerRegisterNo.html" method="post"  enctype="multipart/form-data">
 <input type="hidden" name="custId" id="custId" value="${custId}">
 <div class="form-horizontal">
 		<div class="panel panel-default">
@@ -50,13 +50,13 @@
 								</select>
 							</div>
 						</div>
-					
+				
 						<div class="control-group">
 							<label class="control-label">Upload </label>
 							<div class="controls">
 							<input type="file" name="file">
 							</div>
-						</div>
+						</div> 
 				
 							<!--<div class="control-group">
 							<label class="control-label">Email</label>
@@ -92,7 +92,7 @@
 						  <div class="control-group">
 							<label class="control-label">W.E.F.</label>
 							<div class="controls">
-								<input type="text" class="form-control" name="wef" placeholder=""  />
+								<input type="text" class="form-control" name="wef" placeholder="" />
 							</div>
 						</div>
 						  <div class="control-group">
@@ -229,7 +229,7 @@
 						<thead style="font-size: 12px;">
 						<tr bgcolor="#84939f">
 							<th>Sr.No</th>
-							<th>Perticular</th>
+							<th>Particular</th>
 							
 							<th>Number</th>
 							<th>w.e.f</th>
@@ -344,7 +344,7 @@ function deleteRowsChecked() {
 						 $.ajax({
 							url : "deletecustomerdocument.html",
 							type : "GET",
-						    data: "custDocId=" + custDocId ,
+						    data: "custDocId=" + custDocId,
 							
 
 							success : function(data) {

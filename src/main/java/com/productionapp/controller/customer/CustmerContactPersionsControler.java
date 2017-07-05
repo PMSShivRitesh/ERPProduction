@@ -33,7 +33,7 @@ public class CustmerContactPersionsControler {
 	        if(flag){
 	        
 	        	//cpservice.savecustProcessRate(custprocessrateobj);
-	            returnText = "Contact Persion Name Exists " ;
+	            returnText = "Contact Person Name Exists :- "+ cpersionname;
 	        }else{
 	            returnText = "1";
 	        }
