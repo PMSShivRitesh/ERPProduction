@@ -12,7 +12,7 @@
 			<div class="panel-heading">
 				<div class="container-fluid header-padding">
 					<div class="row-fluid">
-						<div class="span11" align="left">Invoice List<!-- Project Task List --></div>
+						<div class="span11" align="left">General Invoice List<!-- Project Task List --></div>
 						<div class="span1" align="right">
 							<div class="span1" align="right">
 								<div class="btn" title="Cancel" onclick="gethomepage();" id="btnclear">
@@ -26,24 +26,24 @@
 
 			<div class="panel-body">
 			
-				<div class="singleline-records">
+				<div class="singleline-records">				
 					<table id="idtable" class="table table-bordered insideform">
 						<thead style="font-size: 12px;">
 						<tr bgcolor="#84939f">
 							<th Style="width:5%">Sr.No</th>
 							<th>Invoice No</th>
 							<th>Invoice Date</th>
-							<th>Invoice Amount</th>
-							<th>Invoice Status</th>
+							<th>P.O Date</th>
+							<th>G.Invoice Status</th>
 							<th Style="width:8%">Select</th>
 						</tr>
 									</thead>
 									<tbody style="font-size: 12px;">
 										
-											<c:if test="${not empty dchallaninvoicelst}">
+											<c:if test="${not empty lst}">
 												<% int i=1;
 												%>
-             		           					<c:forEach var="listValue" items="${dchallaninvoicelst}">
+             		           					<c:forEach var="listValue" items="${lst}">
              		           					<%
              		           					if(i%2==1){
              		           						%>
@@ -55,11 +55,11 @@
              		           					
              		           						<td><%=i%></td>
              		           						<td>${listValue.invoiceno}</td>
-             		           						<td>${listValue.invoiceDate}</td>
-             		           						<td>${listValue.grandTotal}</td>
-             		           						<td></td>
+             		           						<td>${listValue.invoicedate}</td>
+             		           						<td>${listValue.podate}</td>
+             		           						<td>${listValue.status}</td>
              		           						<td>
-             		           						<a href="dchallaninvoicedetail.html?invoiceno=${listValue.invoiceno}"><div class="btn"><i class="icon-edit"></i></div></a></td>
+             		           						<a href="previewGeneralInvoice.html?invoiceNo=${listValue.invoiceno}"><div class="btn"><i class="icon-edit"></i></div></a></td>
              		           						
              		           					<%i++;
              		           					%>
@@ -107,7 +107,7 @@
 						var input = inputs[inputi];
 						if (input.type === 'checkbox' && input.checked) {
 							var custName = input.value;
-						
+							alert(custName);
 							 $.ajax({
 								url : "deactivatecustomer.html",
 								type : "GET",

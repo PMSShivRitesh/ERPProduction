@@ -57,7 +57,7 @@ public class SupplierContactsControler {
 		String returnText=null;
 	        if(flag){
 	        
-	            returnText = "Name Exists " ;
+	            returnText = "Name Exists : "+contactPersionName;
 	        }else{
 	            returnText = "1";
 	        }

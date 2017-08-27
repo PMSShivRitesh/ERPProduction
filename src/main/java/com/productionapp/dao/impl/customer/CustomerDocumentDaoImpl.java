@@ -40,7 +40,7 @@ public class CustomerDocumentDaoImpl implements CustomerDocumentDao {
 	public boolean deleteCustomerDocuments(int docid)
 	{
 		loger.info("Delete customer documents");
-		System.out.println("test *******************************************************"+docid);
+		
 		sessionfactory.getCurrentSession().createQuery("delete from CustomerDocuments where custDocId='"+docid+"'").executeUpdate();
 		return false;
 	}

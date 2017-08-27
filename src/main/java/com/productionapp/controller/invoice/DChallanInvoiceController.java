@@ -50,11 +50,12 @@ public class DChallanInvoiceController {
 		
 		loger.info("get Dchallan Invoice Items");
 		int custId=custservice.getCustId(custName);
+		
 		List lst=dchallaninvoiceservice.getInvoiceDchallanItems(custId, Integer.parseInt(dchallanno));
 		DchallanDetail dchllanobj=dchallanserive.getDchallandetail(Integer.parseInt(dchallanno));
-		CustomerDetail custdetail=custdetailserrvice.getApplyeTaxOfCustomer(custId);
+		//CustomerDetail custdetail=custdetailserrvice.getApplyeTaxOfCustomer(custId);
 		model.addObject("lst",lst);
-		model.addObject("custdetail",custdetail);
+		//model.addObject("custdetail",custdetail);
 		model.addObject("custName",custName);
 		
 		model.addObject("dchallanno",dchallanno);

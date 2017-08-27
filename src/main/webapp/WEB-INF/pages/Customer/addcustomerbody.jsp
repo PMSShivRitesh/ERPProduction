@@ -7,11 +7,7 @@
 		<script type="text/javascript">
 		$("#idsuccess").hide();
 		</script>
-		
-		
-		
-		
-		
+			
 <form role="form" action="saveCustomerDetail.html" method="post">
 <div class="form-horizontal">
 		<div class="panel panel-default">
@@ -35,7 +31,7 @@
 						<div class="control-group">
 							<label class="control-label">Customer Name</label>
 							<div class="controls">
-								<input type="text" class="form-control"  name="custName" id="custName" placeholder="" onblur="checkcutomer()"   required="required"/>
+								<input type="text" class="form-control"  name="custName" id="custName" placeholder="" onblur="checkcutomer()" required="required"/>
 							</div>
 						</div>
 						
@@ -115,15 +111,11 @@
 							</div>
 						</div>
 
-						<div class="control-group">
-							<label class="control-label"></label>
-							<div class="controls">
-							</div>
-						</div>
+						
 						<div class="control-group">
 							<label class="control-label">Zip Code</label>
 							<div class="controls">
-								<input type="text" class="form-control" name="custZipCode" placeholder="" required="required"/>
+								<input type="text" class="form-control" name="custZipCode" placeholder="" />
 							</div>
 						</div>
 						
@@ -152,15 +144,10 @@
 						<div class="control-group">
 							<label class="control-label">Mobile Number</label>
 							<div class="controls">
-								<input type="text" class="form-control" name="mobilenumber" placeholder="" />
+								<input type="text" class="form-control" name="mobilenumber" placeholder="" required="required" />
 							</div>
 						</div>
-						<div class="control-group">
-							<label class="control-label">WhatsApp Mob.No.</label>
-							<div class="controls">
-								<input type="text" class="form-control" name="whatappmobile" placeholder="" />
-							</div>
-						</div>
+						
 						<div class="control-group">
 							<label class="control-label">Website URL</label>
 							<div class="controls">
@@ -321,5 +308,8 @@ function getTalukaLst()
 			
 	
 }
+
+
+
 	
 </script>

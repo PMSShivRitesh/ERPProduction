@@ -28,7 +28,39 @@ public class InvoiceDetail {
 	private String podate;
 	@Column(name="status")
 	private String status;
+	@Column(name="basicamt")
+	private String basicamt;
+	@Column(name="gstper")
+	private String gstper;
+	@Column(name="gstamt")
+	private String gstamt;
+	@Column(name="gtotal")
+	private String gtotal;
 	
+	public String getBasicamt() {
+		return basicamt;
+	}
+	public void setBasicamt(String basicamt) {
+		this.basicamt = basicamt;
+	}
+	public String getGstper() {
+		return gstper;
+	}
+	public void setGstper(String gstper) {
+		this.gstper = gstper;
+	}
+	public String getGstamt() {
+		return gstamt;
+	}
+	public void setGstamt(String gstamt) {
+		this.gstamt = gstamt;
+	}
+	public String getGtotal() {
+		return gtotal;
+	}
+	public void setGtotal(String gtotal) {
+		this.gtotal = gtotal;
+	}
 	public String getStatus() {
 		return status;
 	}
@@ -71,8 +103,6 @@ public class InvoiceDetail {
 	public void setPodate(String podate) {
 		this.podate = podate;
 	}
-	
-	
 	
 
 }

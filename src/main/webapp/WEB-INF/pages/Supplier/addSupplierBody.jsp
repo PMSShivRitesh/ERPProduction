@@ -35,10 +35,16 @@
 									<input type="text" class="form-control" name="suppName" id="suppName" placeholder="" onblur="checksupplier()" required="required"/>
 							</div>
 						</div>
+						<div class="control-group">
+							<label class="control-label">Short Name</label>
+							<div class="controls">
+								<input type="text" class="form-control" name="suppShortCutName" placeholder="" />
+							</div>
+						</div>
 					 <div class="control-group">
 							<label class="control-label">Address</label>
 							<div class="controls">
-								<textarea  rows="6" class="form-control" name="suppAddress" placeholder=""></textarea>
+								<textarea  rows="4" class="form-control" name="suppAddress" placeholder="" required="required"></textarea>
 							</div>
 						</div>
 						
@@ -48,12 +54,7 @@
 							<input type="checkbox" name="suppGst" value="YES"> 
 							</div>
 						</div>
-						<div class="control-group">
-							<label class="control-label">Excise Apply</label>
-							<div class="controls">
-								<input type="checkbox" name="suppExcise" value="YES">
-							</div>
-						</div>
+						
 						<!--<div class="control-group">
 							<label class="control-label">Raw Material Rate</label>
 							<div class="controls">
@@ -67,17 +68,12 @@
 					<!-- 2 Column -->	
 					
 					<div class="firstquad">
-							<div class="control-group">
-							<label class="control-label">Short Name</label>
-							<div class="controls">
-								<input type="text" class="form-control" name="suppShortCutName" placeholder="" />
-							</div>
-						</div>
+							
 						
 						 <div class="control-group">
 							<label class="control-label">Select Country</label>
 							<div class="controls">
-								<select class="form-control" name="countryName" id="countryName" onchange="getStateLst()">
+								<select class="form-control" name="countryName" id="countryName"  onchange="getStateLst()" required="required">
 										<option>--Select Country--</option>
 											<c:if test="${not empty countryllst}">
              		           					<c:forEach var="listValue" items="${countryllst}">
@@ -87,12 +83,30 @@
 										</select>
 							</div>
 						</div>
-						
+						 <div class="control-group">
+							<label class="control-label">Select State</label>
+							<div class="controls">
+								<select class="form-control" name="stateName" id="stateName" onchange="getDistrictLst()" required="required">
+											<option></option>
+											
+										</select>
+							</div>
+						</div>
 						<div class="control-group">
 							<label class="control-label">Select District</label>
 							<div class="controls">
-								<select class="form-control" name="districtName" id="districtName" onchange="getTalukaLst()">
+								<select class="form-control" name="districtName" id="districtName" onchange="getTalukaLst()" required="required">
 											<option></option>
+										</select>
+							</div>
+						</div>
+							
+						<div class="control-group">
+							<label class="control-label">Taluka</label>
+							<div class="controls">
+									<select class="form-control" name="talukaName" id="talukaName" required="required">
+											<option></option>
+											
 										</select>
 							</div>
 						</div>
@@ -104,26 +118,8 @@
 							</div>
 						</div>
 						
-							<div class="control-group">
-							<label class="control-label">Landline No.</label>
-							<div class="controls">
-							<input type="text" class="form-control"  name="suppConatactNo" placeholder="" />
-							</div>
-						</div> 
+							
 						
-						<div class="control-group">
-							<label class="control-label">VAT</label>
-							<div class="controls">
-									<input type="checkbox" name="suppVat" value="YES" >
-							</div>
-						</div> 
-						
-						<div class="control-group">
-							<label class="control-label">Service Tax Apply</label>
-							<div class="controls">
-								<input type="checkbox" value="YES" name="custServiceTax">  
-							</div>
-						</div> 
 						
 						</div>
 						
@@ -137,51 +133,27 @@
 							</div>
 						</div>
 						
-						 <div class="control-group">
-							<label class="control-label">Select State</label>
+					<div class="control-group">
+							<label class="control-label">Landline No.</label>
 							<div class="controls">
-								<select class="form-control" name="stateName" id="stateName" onchange="getDistrictLst()">
-											<option></option>
-											
-										</select>
+							<input type="text" class="form-control"  name="suppConatactNo" placeholder="" />
 							</div>
-						</div>
+						</div> 
 						<div class="control-group">
-							<label class="control-label">Taluka</label>
+							<label class="control-label">Mobile No.</label>
 							<div class="controls">
-									<select class="form-control" name="talukaName" id="talukaName">
-											<option></option>
-											
-										</select>
+							<input type="text" class="form-control"  name="suppMobileNo" placeholder="" required="required"/>
 							</div>
-						</div>
+						</div> 
+					
+						
 						<div class="control-group">
 							<label class="control-label">Website URL</label>
 							<div class="controls">
 								<input type="text" class="form-control" name="suppWebsite" placeholder="" />
 							</div>
 						</div>
-						<div class="control-group">
-							<label class="control-label"></label>
-							<div class="controls">
-							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label"></label>
-							<div class="controls">
-							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label"></label>
-							<div class="controls">
-							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label">CST Apply</label>
-							<div class="controls">
-							<input type="checkbox" name="suppCst" value="YES">
-							</div>
-						</div>
+					
 						
 											
 					</div>
@@ -285,7 +257,7 @@ function getDistrictLst()
 					
 					
   					$('#districtName').empty();
-					   	$('#districtName').append('<option value="">Select Districta</option>');
+					   	$('#districtName').append('<option value="">Select District</option>');
  					 for (i in stateList) {
  						
    			   $('#districtName').append('<option value="' + stateList[i].districtId + '">' +stateList[i].districtName + '</option>');

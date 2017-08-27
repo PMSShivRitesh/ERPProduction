@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.productionapp.dao.customer.CustomerItemDao;
+import com.productionapp.model.customer.CustomerDocuments;
 import com.productionapp.model.customer.CustomerItems;
 
 
@@ -36,6 +37,22 @@ public class CustomerItemDaoImpl implements CustomerItemDao{
 	public String getCustItemRate(int custId,String itemCode){
 		loger.info("Get Customer Item Rate");
 		return (String) sessionfactory.getCurrentSession().createCriteria(CustomerItems.class).setProjection(Projections.property("itemRate")).add(Restrictions.eq("custId", custId)).uniqueResult();
+	}
+	
+	public boolean checkcustitemexist(int custId, String itemCode){
+		boolean flag=false;
+		List<String>custitemlst=sessionfactory.getCurrentSession().createCriteria(CustomerItems.class).add(Restrictions.eq("custId", custId)).add(Restrictions.eq("itemCode", itemCode)).list();
+		if(custitemlst.size()>0){
+			flag=true;
+		}
+		
+		
+		return flag;
+	}
+	public boolean deleteCustomerItem(int custitemid){
+		loger.info("Delete Customer Contact Pesrion");
+		sessionfactory.getCurrentSession().createQuery("delete from CustomerItems where custItemId='"+custitemid+"'").executeUpdate();
+		return false;
 	}
 	
 

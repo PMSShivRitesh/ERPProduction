@@ -371,8 +371,6 @@ function calculateTotal()
 		 var i;
 		 
 	     var rowLength = oTable.rows.length;
-	     
-	    
 	    
 		  for (i =1; i <rowLength; i++)
 		  {
@@ -386,9 +384,6 @@ function calculateTotal()
 		
 		 document.getElementById("bTotal").value =sum;
 		 getApplyeTaxOfCustomer();
-		 
-		
-		
 		  
 }
 

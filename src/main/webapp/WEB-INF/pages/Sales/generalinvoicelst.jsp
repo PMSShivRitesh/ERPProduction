@@ -3,14 +3,12 @@
 <title>Home</title>
 <link rel="icon" type="image/png" href="/RMT/images/favicon.ico">
 <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
-<script type="text/javascript" src="js/autocompleter/custnameauto.js"></script>
-<script type="text/javascript" src="js/autocompleter/itemcodeauto.js"></script>
 <script src="bootstrap/js/bootstrap-dropdown.js"></script>
 <link rel="stylesheet" href="css/style.css">
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <link rel="stylesheet" href="css/login.css" type="text/css">
 <link rel="stylesheet" href="css/panel.css" type="text/css">
-
+<script type="text/javascript" src="js/autocompleter/custnameauto.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
 <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
 <link href="bootstrap/css/docs.css" rel="stylesheet">
@@ -20,7 +18,7 @@
 <%-- <jsp:directive.include file="/Homepages/header.jsp" /> --%>
 	<%@ include file="/WEB-INF/pages/template/headeremployee.jsp"%>
 	<%@ include file="/WEB-INF/pages/template/leftmenu.jsp"%>
-	<%@ include file="/WEB-INF/pages/Customer/allocateitembody.jsp"%>
+	<%@ include file="/WEB-INF/pages/Sales/generalinvoicelstbody.jsp"%>
 	<%@ include file="/WEB-INF/pages/template/footer.jsp"%>
 <!--==================== NAVIGATION =========================-->
 

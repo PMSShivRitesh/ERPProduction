@@ -57,7 +57,7 @@ public class DChallanControler {
 	@RequestMapping("/dchallandetail")
 	public ModelAndView getdchallandetail(@RequestParam(value="dchallanno") String dchallanno){
 		
-		loger.info("Gate D.Challan Detail "+dchallanno);
+		loger.info("Get D.Challan Detail "+dchallanno);
 		ModelAndView model =new ModelAndView("/Dchallan/dchallandetail");
 		int dchallannoInt=-1;
 		try{

@@ -45,5 +45,6 @@ public class DChallanInvoiceServiceImpl implements DChallanInvoiceService{
 		// TODO Auto-generated method stub
 		return dao.getCustInvoiceDetailLst(custId);
 	}
+	
 
 }

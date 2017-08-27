@@ -38,4 +38,14 @@ public class CustomerItemServiceImpl implements CustomerItemService {
 		return dao.getCustItemRate(custId, itemCode);
 	}
 
+	public boolean checkcustitemexist(int custId, String itemCode) {
+		// TODO Auto-generated method stub
+		return dao.checkcustitemexist(custId, itemCode);
+	}
+
+	public boolean deleteCustomerItem(int custitemid) {
+		// TODO Auto-generated method stub
+		return dao.deleteCustomerItem(custitemid);
+	}
+
 }

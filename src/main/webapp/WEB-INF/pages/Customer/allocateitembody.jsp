@@ -1,9 +1,24 @@
+ 
 <fieldset class="fieldset-style">
-
+<div ng-app="myApp" ng-controller="allocateitemcontroler">
 <form role="form" action="saveCustomerItem.html" method="post" >
-
+<div class="alert alert-success" id="idsuccess">
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+			<i class="icon-thumbs-up"></i>Record  Delete Successfully 
+		</div>
+		<div class="alert alert-success" id="idsuccess1">
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+			<i class="icon-thumbs-up"></i> Details Added
+		</div>
+		<div class="alert alert-success" id="idsuccess2">
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+			<i class="icon-thumbs-up"></i>
+		</div>
+				
 		<script type="text/javascript">
 		$("#idsuccess").hide();
+		$("#idsuccess1").hide();		
+		$("#idsuccess2").hide();
 		</script>
 <div class="form-horizontal">
 		<div class="panel panel-default">
@@ -12,7 +27,9 @@
 					<div class="row-fluid">
 						<div class="span10" align="left">Create Item</div>
 						<div class="span2" align="right">
-							<input type="submit" class="btn-save" value="" id="btnsave" title="Save Filled Data" />
+							<div ng-click="submit(e)" class="btn" value="" id="btnsave" title="Save Filled Data" />
+									<i class="icon-plus-sign"></i>
+							</div>
 							 <div class="btn" title="Delete Selected Item" onclick="deleteRowsChecked()" id="btnclear">
 								<i class="icon-trash"></i>
 							</div> 
@@ -32,36 +49,11 @@
 						<div class="control-group">
 							<label class="control-label">Customer Name</label>
 							<div class="controls">
-								<input type="text" class="form-control" name="custName" id="custName"  value="${custName}" placeholder="" required="required" />
+								<input type="text" class="form-control" ng-model="e.custName" name="custName" id="custName"  ng-blur="getdata(e)" value="${custName}" placeholder="" required="required" />
 							</div>
 						</div>
 				
-							<!--<div class="control-group">
-							<label class="control-label">Email</label>
-							<div class="controls">
-								<input type="email" class="form-control" name="custEmail" placeholder="" />
-							</div>
-						</div>
-						<div class="control-group">
-							 <label class="control-label">GST Apply</label>
-							<div class="controls">
-								<input type="checkbox" name="custGst" value="YES"> 
-							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label">Excise Apply</label>
-							<div class="controls">
-								<input type="checkbox" name="custExcise" value="YES"> 
-							</div>
-						</div> -->
-						<!--<div class="control-group">
-							<label class="control-label">Raw Material Rate</label>
-							<div class="controls">
-								<input type="text" class="form-control" id="supplierRate" name="supplierRate" readonly="readonly" placeholder="" />
-							</div>
-						</div>
-						 -->
-						
+							
 						</div>
 						
 					<!-- 2 Column -->	
@@ -70,61 +62,11 @@
 						<div class="control-group">
 							<label class="control-label">Item Code</label>
 							<div class="controls">
-								<input type="text" class="form-control" name="itemCode" id="itemCode" placeholder="" onblur="checkcustitemexist()" required="required"/>
+								<input type="text" class="form-control" ng-model="e.itemCode" name="itemCode" id="itemCode" onblur="checkcustitemexist()"  required="required"/>
 							</div>
 						</div>
 
-						<%--  <div class="control-group">
-							<label class="control-label">Select Country</label>
-							<div class="controls">
-								<select class="form-control" name="countryName" id="countryName" onchange="getStateLst()">
-										<option>--Select Country--</option>
-											<c:if test="${not empty countryllst}">
-             		           					<c:forEach var="listValue" items="${countryllst}">
-             		           						<option value="${listValue}">${listValue}</option>
-												</c:forEach>
-											</c:if>
-										</select>
-							</div>
-						</div>
-						
-						<div class="control-group">
-							<label class="control-label">Select District</label>
-							<div class="controls">
-								<select class="form-control" name="districtName" id="districtName" onchange="getTalukaLst()">
-											<option></option>
-										</select>
-							</div>
-						</div>
-
-						<div class="control-group">
-							<label class="control-label">Zip Code</label>
-							<div class="controls">
-								<input type="text" class="form-control" name="custZipCode" placeholder="" required="required"/>
-							</div>
-						</div>
-						
-							<div class="control-group">
-							<label class="control-label">Landline No.</label>
-							<div class="controls">
-								<input type="text" class="form-control"  name="custConatactNo" placeholder="" />
-							</div>
-						</div> 
-						
-						<div class="control-group">
-							<label class="control-label">VAT</label>
-							<div class="controls">
-								<input type="checkbox" name="custVat" value="YES"> 
-							</div>
-						</div> 
-						
-						<div class="control-group">
-							<label class="control-label">Service Tax Apply</label>
-							<div class="controls">
-								<input type="checkbox" value="YES" name="custServiceTax">  
-							</div>
-						</div>  --%>
-						
+					
 						</div>
 						
 						<!-- 3 Column -->
@@ -133,54 +75,11 @@
 						  <div class="control-group">
 							<label class="control-label">Item Rate</label>
 							<div class="controls">
-								<input type="text" class="form-control" name="itemRate" placeholder="" required="required" />
+								<input type="text" class="form-control" ng-model="e.itemRate" name="itemRate" placeholder="" required="required" />
 							</div>
 						</div>
 						
-						 <!-- <div class="control-group">
-							<label class="control-label">Select State</label>
-							<div class="controls">
-								<select class="form-control" name="stateName" id="stateName" onchange="getDistrictLst()">
-											<option></option>
-											</select>
-							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label">Taluka</label>
-							<div class="controls">
-									<select class="form-control" name="talukaName" id="talukaName">
-											<option></option>
-										</select>
-							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label">Website URL</label>
-							<div class="controls">
-								<input type="text" class="form-control" name="custWebsite" placeholder="" />
-							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label"></label>
-							<div class="controls">
-							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label"></label>
-							<div class="controls">
-							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label"></label>
-							<div class="controls">
-							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label">CST Apply</label>
-							<div class="controls">
-								<input type="checkbox" name="custCst" value="YES" >
-							</div>
-						</div> -->
-						
+						 
 											
 					</div>
 				</div>
@@ -221,29 +120,15 @@
 						</tr>
 									</thead>
 									<tbody style="font-size: 12px;">
-										
-											<c:if test="${not empty custitemlst}">
-												<% int i=1;
-												%>
-             		           					<c:forEach var="listValue" items="${custitemlst}">
-             		           					<%
-             		           					if(i%2==1){
-             		           						%>
-             		           							<tr class="" bgcolor="white">
-             		           						<%}else{ %>
-             		           							<tr class="" bgcolor="#dfe4e6">
-             		           							<%
-             		           							}
-             		           					i++;
-             		           					%>
-             		           						<td><%=i %></td>
-             		           						<td>${listValue.itemCode}</td>
-             		           				
-             		           						<td>${listValue.itemRate}</td>
-             		           							<td><input name="chk" id="chk" value="${listValue.custItemId}" type="checkbox">
-             		           					</tr>
-												</c:forEach>
-											</c:if>
+										 <tr ng-repeat="x in names">
+  										  <td>{{$index + 1}}</td>
+  										   <td>{{ x.itemCode}}</td>
+  										   <td>{{ x.itemRate}}</td>
+  										   
+  										  <td><input  id="chk" value="{{x.custItemId}}" type="checkbox"></td>
+  										  
+ 										 </tr>
+											
 										
 									</tbody>
 								</table>
@@ -252,13 +137,36 @@
 								
 				
 				</div>
-				
+				</div>
+			</div>
+		</div>		
 	 
 	</fieldset>
 	
 	<script>
+	
+	var app = angular.module('myApp', []);
 
-/*
+	app.controller('allocateitemcontroler', function($scope, $http) {
+	  $scope.submit = function(values){
+
+		  $http.post("saveCustomerItem.html",values).then(function (response) {
+			  $scope.names =response.data;
+			  });
+			  
+	  }
+	  
+	  $scope.getdata = function(values){
+
+		  $http.post("getCustomerAllocatedItem.html",values).then(function (response) {
+			  $scope.names =response.data;
+			  });
+			  
+	  }
+	  
+	});
+
+
 function checkcustitemexist() {
     // get the form values
    var custName = $('#custName').val();
@@ -271,15 +179,17 @@ function checkcustitemexist() {
     	
     	if(data=='"1"'){
     		 $('#idsuccess').hide();
+    		 $("#idsuccess1").hide();
+    		 $("#idsuccess2").hide();
 			}
     else
-    	{
-    		 $('#itemCode').val('');
-    	   $('#idsuccess').show();
+    	{	
+    		
+    	   $('#idsuccess2').show();
     	
     	
     //$("#idsuccess").show();
-    $("#idsuccess").html("<button type='button' class='close' data-dismiss='alert' onclick='hide();'>&times;</button><i class='icon-thumbs-up'></i>"+
+    $("#idsuccess2").html("<button type='button' class='close' data-dismiss='alert' onclick='hide();'>&times;</button><i class='icon-thumbs-up'></i>"+
     		data);
     
    
@@ -293,8 +203,8 @@ function checkcustitemexist() {
     }
     });
     }
+   
     
-    */
 
 
 function  gethomepage()
@@ -302,12 +212,11 @@ function  gethomepage()
 	  location.href="getSystems.html?moduleName=customer";
 }
 
-
-
+	
 function deleteRowsChecked() {
 	var check1 = 0;
 	var table = document.getElementById("idtable");
-	var custName=document.getElementById("custName").value;
+	
 	
 	for ( var rowi = table.rows.length; rowi--;) {
 		var row = table.rows[rowi];
@@ -323,6 +232,8 @@ function deleteRowsChecked() {
 	if (check1 == 0) {
 		$('#iderror').show();
 		$('#idsuccess').hide();
+		$("#idsuccess1").hide();
+		$("#idsuccess2").hide();
 	} else {
 		var result = confirm("Are you sure you want to delete selected records?");
 		if (result) {
@@ -333,12 +244,12 @@ function deleteRowsChecked() {
 				for ( var inputi = inputs.length; inputi--;) {
 					var input = inputs[inputi];
 					if (input.type === 'checkbox' && input.checked) {
-						var itemcode = input.value;
-						alert(itemcode);
+						var custitemid = input.value;
+						alert(custitemid);
 						 $.ajax({
-							url : "deleteCustomerItem.html",
+							url : "deleteCustomerItem.html", 
 							type : "GET",
-						    data: "custName=" + custName + "&itemcode=" + itemcode,
+						    data: "&custitemid=" +custitemid,
 							
 
 							success : function(data) {
@@ -349,6 +260,8 @@ function deleteRowsChecked() {
 					}
 				}
 			}
+			$("#idsuccess1").hide();		
+			$("#idsuccess2").hide();
 			$('#idsuccess').show();
 			$('#iderror').hide();
 		}

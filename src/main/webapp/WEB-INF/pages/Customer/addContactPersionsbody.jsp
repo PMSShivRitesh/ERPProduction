@@ -15,7 +15,7 @@
 		<script type="text/javascript">
 		$("#idsuccess").hide();
 	
-		$("#idsuccess1").show();		
+		$("#idsuccess1").hide();		
 		$("#idsuccess2").hide();
 		</script>
 <form action="addCustomerContactPersions.html" method="post">
@@ -30,7 +30,7 @@
 						</div>
 						<div class="span3" align="right">
 							<input type="submit" class="btn-save" value="" id="btnsave" title="Add Filled Data" />
-							<div class="btn" onclick="deleteRowsChecked();" id="deletebtn" title="Delete selected Contact Persion">
+							<div class="btn" onclick="deleteRowsChecked();" id="deletebtn" title="Delete selected Contact Person">
 								<i class="icon-trash"></i>
 							</div>
 							
@@ -58,9 +58,9 @@
 							</div>
 						</div>
 					  <div class="control-group">
-							<label class="control-label">Mobile</label>
+							<label class="control-label">Email</label>
 							<div class="controls">
-								<input type="text" class="form-control" name="cpphno" placeholder=""  />
+								<input type="text" class="form-control" name="cpmail" placeholder="" />
 							</div>
 						</div>
 						<!--<div class="control-group">
@@ -94,14 +94,14 @@
 					<!-- 2 Column -->	
 					
 					<div class="firstquad">
-						
-
-						  <div class="control-group">
-							<label class="control-label">Email</label>
+						<div class="control-group">
+							<label class="control-label">Mobile</label>
 							<div class="controls">
-								<input type="text" class="form-control" name="cpmail" placeholder="" />
+								<input type="text" class="form-control" name="cpphno" placeholder=""  />
 							</div>
 						</div>
+
+						  
 						
 						<%--<div class="control-group">
 							<label class="control-label">Select District</label>

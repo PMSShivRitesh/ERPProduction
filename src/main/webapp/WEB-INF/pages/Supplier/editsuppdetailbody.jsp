@@ -158,79 +158,13 @@
 							</c:choose>
 							</div>
 						</div>
-						<div class="control-group">
-							<label class="control-label">Excise Apply</label>
-							<div class="controls">
-								<c:choose>
-							<c:when test="${supplierdetail.suppExcise=='YES'}">
-     	 							<input type="checkbox" checked  name="suppExcise" id="suppExcise">  
-      							</c:when>    
-  						  		<c:otherwise>
-    								  <input type="checkbox" name="suppExcise" id="suppExcise"> 
-  							 	</c:otherwise>
-						</c:choose>
-							</div>
-						</div>
+						
 						
 						
 						</div>
 
-					<div class="firstquad">
-						<div class="control-group">
-							<label class="control-label">CST Apply</label>
-							<div class="controls">
-								<c:choose>
-									<c:when test="${supplierdetail.suppCst=='YES'}">
-										<input type="checkbox" checked name="suppCst" id="suppCst">
-									</c:when>
-									<c:otherwise>
-										<input type="checkbox" name="suppCst" id="suppCst">
-									</c:otherwise>
-								</c:choose>
-							</div>
-						</div>
-						
-						<div class="control-group">
-							<label class="control-label">Service Tax Apply</label>
-							<div class="controls">
-								<c:choose>
-							<c:when test="${supplierdetail.suppServiceTax=='YES'}">
-     	 							<input type="checkbox" checked name="suppServiceTax" id="suppServiceTax">  
-      							</c:when>    
-  						  		<c:otherwise>
-    								  <input type="checkbox" name="suppServiceTax" id="suppServiceTax" > 
-  							 	</c:otherwise>
-						</c:choose>
-							</div>
-						</div>
-					</div>
-					
-					<div class="firstquad">
-						<div class="control-group">
-							<label class="control-label">VAT Apply</label>
-							<div class="controls">
-								<c:choose>
-							<c:when test="${supplierdetail.suppVat=='YES'}">
-     	 							<input type="checkbox" checked name="suppVat" id="suppVat">  
-      							</c:when>    
-  						  	
-  						  		<c:otherwise>
-    								  <input type="checkbox"  name="suppVat" id="suppVat"> 
-  							 	</c:otherwise>
-							
-								
-						</c:choose>
-							</div>
-						</div>
-						
-						
-						<div class="control-group">
-							<label class="control-label"></label>
-							<div class="controls">
-								
-							</div>
-						</div>
-					</div>
+				
+				
 		
 						
 				</div>

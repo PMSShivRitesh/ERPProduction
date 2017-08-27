@@ -1,7 +1,8 @@
 <div ng-app="myApp" ng-controller="noramalinvoiceentryCtrl"> 
 
 <fieldset class="fieldset-style">
-<form role="form" action="saveInvoice.html" >
+   
+<form role="form" action="insertinvoiceamt.html" method="post">
 <div class="form-horizontal">
 		<div class="panel panel-default">
 			<div class="panel-heading">
@@ -9,9 +10,9 @@
 					<div class="row-fluid">
 						<div class="span9" align="left">Create Invoice</div>
 						<div class="span3" align="right">
-						
-							<button type="button" class="btn" title="Get Item Code" onclick="getdchallandetail()">
-  								<i class="icon-eye-open"></i>
+
+							<button type="submit" class="btn" title="Confirm" >
+  								<i class="icon-ok"></i>
 							</button>
 							
 								<div class="btn" align="left" title="Sales Home" onclick="gethomepage()" >
@@ -50,19 +51,12 @@
 						<div class="control-group">
 							<label class="control-label">Invoice Date</label>
 							<div class="controls">
-						<input size="14%" type="text" name="invoicedate" ng-model="e.invoicedate" id="invoicedate" class="form-control" required="required" placeholder="" value=""  />
+						<input size="14%" type="text" name="invoicedate" ng-model="e.invoicedate" id="invoicedate" class="form-control" required="required"  />
 							</div>
 						</div>
 					</div>
 					
-					
-					<div class="firstquad">
-						
-						
-						
-					</div>
-					
-				
+								
 					
 			</div>
 			
@@ -148,7 +142,7 @@
 						<div class="control-group">
 							<label class="control-label">Amount</label>
 							<div class="controls">
-								<input type="text" class="form-control"  required="required" name="amount" ng-model="e.amount" id="amount" placeholder=""  />
+								<input type="text" class="form-control"  required="required" name="amount" ng-model="e.amount" id="amount" readonly="readonly"  />
 							</div>
 						</div>			
 							
@@ -211,7 +205,7 @@
   										     <td>{{ x.amount}}</td>
   										   
   										  <td><input  id="chk" value="{{ x.srno }}" type="checkbox"></td>
-  										   <input type="hidden" value="{{ x.invoiceno}}" id="invoiceno"/>   
+  										  <input type="hidden" value="{{ x.invoiceno}}" id="invoiceNo" name="invoiceno"/>    
  										 </tr>
 									</tbody>
 								</table>
@@ -225,9 +219,95 @@
 	
 	
 	
+	<div class="panel-heading">
+				<div class="container-fluid header-padding">
+					<div class="row-fluid">
+						<div class="span9" align="left">Calculate Amount</div>
+							<div class="span3" align="right">
+							
+					</div>	
+				</div>
+			</div>		
+			</div>
+
+			<!--      Actual Form -->
+			<div class="container-fluid panel-body">
+				<div class="row-fluid search-align">
+					<div class="firstquad">
+					
+				 <div class="control-group">
+							<div class="control-group">
+							<label class="control-label">Basic Amount</label>
+							<div class="controls">
+						 <input type="text"  type="text" id="basicamt" name="basicamt" value="{{totalAmount()}}">
+							</div>
+						</div>	
+						
+						 
+						</div>
+					</div>
+					<!-- 3 Column -->
+						<div class="firstquad">
+							<div class="control-group">
+							<label class="control-label">GST</label>
+							<div class="controls">
+								<select class="form-control" name="gstper" ng-model="e.gstper" id="gstper" onchange="calculateGstAmt()">
+									<option value="0">0%</option>
+									<option value="18">18%</option>
+								</select>
+							</div>
+						</div>
+						</div>
+					<div class="firstquad">
+									
+							<div class="control-group">
+							<label class="control-label">GST Amount</label>
+							<div class="controls">
+								<input type="text" class="form-control"  required="required" readonly="readonly" name="gstamt"  id="gstamt" />
+							</div>
+						</div>			
+								
+				</div>
+				
+			</div>
+			
+			
+			
+			<div class="row-fluid search-align">
+					<div class="firstquad">
+					
+				 <div class="control-group">
+							<div class="control-group">
+							<label class="control-label">Final Amount</label>
+							<div class="controls">
+						 <input type="text"  type="text" id="gtotal" name="gtotal">
+							</div>
+						</div>	
+						
+						 
+						</div>
+					</div>
+					<!-- 3 Column -->
+						<div class="firstquad">
+							<div class="control-group">
+							<label class="control-label">Rs.In Words</label>
+							<div class="controls">
+								<input type="text" size="40%">
+							</div>
+						</div>
+						</div>
+					<div class="firstquad">
+									
+									
+								
+				</div>
+				
+			</div>
+	
+	
 			</fieldset>
 		</div>
-	
+	</form>
 
 
 <script type="text/javascript">			
@@ -245,18 +325,39 @@ app.controller('noramalinvoiceentryCtrl', function($scope, $http) {
 	  $http.post("saveInvoice.html",values).then(function (response) {
 		  $scope.names =response.data;
 		  });
-		  
+	  
+	
+  
   }
+  
+  $scope.totalAmount = function(){
+	    var total = 0;
+	    
+	    for(count=0;count<$scope.names.length;count++){
+	    	//alert($scope.names[count].amount);
+	      total += parseInt($scope.names[count].amount,10);
+	    }
+	    return total;
+	};
   
 });
 
 
+
+
+function previewGenaralinvoice(){
+	var invoiceNo =document.getElementById("invoiceNo").value;
+
+	location.href="previewGeneralInvoice.html?invoiceNo="+invoiceNo;
+}
+ 
 
 function date()
 {
 		
 		$("#dchallandate").val($.datepicker.formatDate("dd/mm/yy", new Date()));
 }
+
 
 function getcustItemList()
 {
@@ -364,7 +465,7 @@ function deleteRowsChecked() {
 					var input = inputs[inputi];
 					if (input.type === 'checkbox' && input.checked) {
 						var srno = input.value;
-						alert(srno);
+				
 						 $.ajax({
 							url : "deleteinvoiceitem.html",
 							type : "GET",
@@ -386,10 +487,14 @@ function deleteRowsChecked() {
 }
 
 
-function getdchallandetail(){
-	var dchallanno =document.getElementById("dchallanno").value;
 
-	location.href="dchallandetail.html?dchallanno="+dchallanno;
+function calculateGstAmt(){
+	var per=document.getElementById("gstper");
+	var gstper = per.options[per.selectedIndex].value;
+	document.getElementById("gstamt").value=(parseFloat(document.getElementById("basicamt").value)*parseFloat(gstper))/100;
+	document.getElementById("gtotal").value=(parseFloat(document.getElementById("gstamt").value)+parseFloat(document.getElementById("basicamt").value)).toFixed(2);
 }
+
+
 
 </script>

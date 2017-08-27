@@ -16,6 +16,7 @@ import org.springframework.stereotype.Repository;
 
 import com.productionapp.dao.invoice.DChallanInvoiceDao;
 import com.productionapp.model.customer.CustomerItems;
+import com.productionapp.model.dchallan.DchallanDetail;
 import com.productionapp.model.dchallan.DchallanItems;
 import com.productionapp.model.invoice.DChallanInvoiceDetail;
 import com.productionapp.model.invoice.DChallanInvoiceItemDetail;
@@ -100,5 +101,7 @@ public class DChallanInvoiceDaoImpl implements DChallanInvoiceDao {
 		loger.info("get Customer Invoice List");
 		return sessionfactory.getCurrentSession().createCriteria(DChallanInvoiceDetail.class).add(Restrictions.eq("custId", custId)).list();
 	}
+
+	
 
 }

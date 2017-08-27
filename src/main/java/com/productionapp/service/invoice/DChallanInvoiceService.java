@@ -13,4 +13,5 @@ public interface DChallanInvoiceService {
 	public String getBillAmount(int invoiceno);
 	public boolean updateDchallanInvoiceStatus(int invoiceno,String status);
 	public List getCustInvoiceDetailLst(int custId);
+	
 }

@@ -21,12 +21,19 @@ public class SupplierDocumetnsServiceImpl implements SupplierDocumetnsService{
 
 	public boolean deletesuppDocuments(int suppDocId) {
 		// TODO Auto-generated method stub
+		System.out.println("*****************************Test In Service**********************************************"+suppDocId);
 		return dao.deletesuppDocuments(suppDocId);
 	}
 
-	public List getSuppDocumentsList(int suppId) {
+	public List<SupplierDocuments> getSuppDocumentsList(int suppId) {
 		// TODO Auto-generated method stub
+		
 		return dao.getSuppDocumentsList(suppId);
+	}
+
+	public boolean checkDocementExist(int suppId, String docname) {
+		// TODO Auto-generated method stub
+		return dao.checkDocementExist(suppId, docname);
 	}
 
 }

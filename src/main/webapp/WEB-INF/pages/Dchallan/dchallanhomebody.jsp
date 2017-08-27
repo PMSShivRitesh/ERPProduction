@@ -1,6 +1,13 @@
 <div ng-app="myApp" ng-controller="dchallanentryCtrl"> 
 <body>
 <fieldset class="fieldset-style">
+<div class="alert alert-success" id="idsuccess">
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+			<i class="icon-thumbs-up"></i>Record  Delete Successfully 
+		</div>
+		<script type="text/javascript">
+		$("#idsuccess").hide();
+		</script>
 <form role="form" action="saveDChallan.html" >
 <div class="form-horizontal">
 		<div class="panel panel-default">
@@ -66,8 +73,8 @@
 						<div class="control-group">
 							
 							<div class="controls">
-						With Material&nbsp;&nbsp;&nbsp;<input type="radio" name="dchallantype" ng-model="e.dchallantype" id="dchallantype" class="form-control"  placeholder="" value="With Material" />
-						&nbsp;&nbsp;&nbsp;&nbsp;Labour Charges&nbsp;&nbsp;&nbsp;<input type="radio" name="dchallantype" ng-model="e.dchallantype" id="dchallantype" class="form-control" placeholder="" value="Labour Charges Only" />
+						With Material <input type="radio" name="dchallantype" ng-model="e.dchallantype" id="dchallantype" class="form-control"  placeholder="" value="With Material" />
+						Labour Charges <input type="radio" name="dchallantype" ng-model="e.dchallantype" id="dchallantype" class="form-control" placeholder="" value="Labour Charges Only" />
 					
 							</div>
 						</div>
@@ -374,7 +381,7 @@ function deleteRowsChecked() {
 					var input = inputs[inputi];
 					if (input.type === 'checkbox' && input.checked) {
 						var srno = input.value;
-						alert(srno);
+					
 						 $.ajax({
 							url : "deletedchallanitems.html",
 							type : "GET",

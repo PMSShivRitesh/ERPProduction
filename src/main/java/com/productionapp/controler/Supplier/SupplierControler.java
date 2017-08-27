@@ -38,7 +38,7 @@ public class SupplierControler {
 		loger.info("Get Supplier Form");
 		ModelAndView model=new ModelAndView("/Supplier/addsupplier");
 		Map<String,String> countryllst=countryservice.getCountryListForDropdown();
-			model.addObject("countryllst",countryllst);
+		model.addObject("countryllst",countryllst);
 		
 		return model;
 	}
@@ -65,7 +65,7 @@ public class SupplierControler {
 	        if(flag){
 	        
 	        	//cpservice.savecustProcessRate(custprocessrateobj);
-	            returnText = "Supplier Exists " ;
+	            returnText = "Supplier Exists : " +suppName ;
 	        }else{
 	            returnText = "1";
 	        }

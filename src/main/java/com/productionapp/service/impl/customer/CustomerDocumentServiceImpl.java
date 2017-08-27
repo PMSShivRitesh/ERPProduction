@@ -30,7 +30,7 @@ public class CustomerDocumentServiceImpl implements CustomerDocumentService {
 
 	public boolean deleteCustomerDocuments(int docid) {
 		// TODO Auto-generated method stub
-		System.out.println("test *******************************************************"+docid);
+		
 		return dao.deleteCustomerDocuments(docid);
 	}
 

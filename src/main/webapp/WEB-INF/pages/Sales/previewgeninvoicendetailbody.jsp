@@ -7,13 +7,15 @@
 			<div class="panel-heading">
 				<div class="container-fluid header-padding">
 					<div class="row-fluid">
-						<div class="span9" align="left">D.Challan Detail</div>
+						<div class="span9" align="left">General Invoice Detail</div>
 						<div class="span3" align="right">
 						
-							
+							<div class="btn"  id="AddIteam" title="Add Invoive Items"  onclick="addNewIteam()" >
+								<i class="icon-plus-sign"></i>
+							</div>
 								<c:choose>
-    <c:when test="${dchllanobj.dchallanstatus=='Pending'}">
-       <div class="btn" align="left" title="Confirm" id="confirm" onclick="updatedchallanstatus()" >
+    <c:when test="${dchllanobj.status=='Pending'}">
+       <div class="btn" align="left" title="Confirm" id="confirm" onclick="updateginvoicestatus()" >
 							<i class="icon-ok"></i>
 							<!--  	<input type="button" class="glyphicon glyphicon-step-backward" value="Next" onclick="getNextForm()"/>-->
 							</div>
@@ -28,7 +30,7 @@
 							
 							
 							
-							<div class="btn" align="left" title="Sales Home" onclick="gethomepage()" >
+							<div class="btn" align="left" title="Home" onclick="gethomepage()" >
 							<i class="icon-home"></i>
 							<!--  	<input type="button" class="glyphicon glyphicon-step-backward" value="Next" onclick="getNextForm()"/>-->
 							</div>
@@ -61,9 +63,9 @@
 						
 						
 						<div class="control-group">
-							<label class="control-label">D.Challan No</label>
+							<label class="control-label">G.Invoice No</label>
 							<div class="controls">
-						<input size="14%" type="text" class="form-control" readonly="readonly" id="dchallanno" value="${dchllanobj.dchallanno}" placeholder="" value=""  />
+						<input size="14%" type="text" class="form-control" readonly="readonly" id="ginvoiceno" value="${dchllanobj.invoiceno}" placeholder="" value=""  />
 							</div>
 						</div>
 					</div>
@@ -71,9 +73,9 @@
 					
 					<div class="firstquad">
 						<div class="control-group">
-							<label class="control-label">D.Challan Date</label>
+							<label class="control-label">G.Invoice Date</label>
 							<div class="controls">
-						<input type="text" class="form-control" readonly="readonly" value="${dchllanobj.dchallandate}" placeholder="" value=""  />
+						<input type="text" class="form-control" readonly="readonly" value="${dchllanobj.invoicedate}" placeholder="" value=""  />
 							</div>
 						</div>
 						
@@ -103,17 +105,9 @@
 						<input type="text" readonly="readonly" value="${dchllanobj.podate}" class="form-control" required="required" placeholder=""  />
 							</div>
 						</div>
+						  
 					</div>
 					
-					<div class="firstquad">
-						
-						<div class="control-group">
-							<label class="control-label">Challan Type</label>
-							<div class="controls">
-						<input type="text" class="form-control" readonly="readonly" value="${dchllanobj.dchallantype}" placeholder=""  />
-							</div>
-						</div>
-					</div>
 					
 			</div>
 </div>
@@ -123,23 +117,23 @@
 			<div class="panel-heading">
 				<div class="container-fluid header-padding">
 					<div class="row-fluid">
-						<div class="span11" align="left">D.Challan Items </div>
+						<div class="span11" align="left">General Invoice Items </div>
 							
 					</div>
 				</div>
 			</div>
 			
 			
-			<div class="panel-body">
+			<div class="panel-body" >
 				<div class="singleline-records">
 						<table class="table table-bordered insideform" style="font-size: 12px;" id="dchallantable">
 									<thead style="font-size: 12px;">
 										<tr bgcolor="#84939f">
 												<th>Sr No.</th>
 								<th>Item Code</th>
-								
-								
 								<th>Qty</th>
+								<th>Rate</th>
+								<th>Amount</th>
 									</tr>
 									</thead>
 									<tbody style="font-size: 12px;">
@@ -161,11 +155,10 @@
              		           					%>
              		           						
              		           						<td><%=i %></td>
-             		           						<td>${listValue.itemcode}</td>
-             		           					
-             		           					
-             		           						<td>${listValue.itemQty}</td>
-             		           					
+             		           						<td>${listValue.itemCode}</td>
+             		           						<td>${listValue.qty}</td>
+             		           					     <td>${listValue.rate}</td>
+             		           					     <td>${listValue.amount}</td>
              		           					
              		           					
              		           					</tr>
@@ -246,29 +239,11 @@ function getcustItemList()
 	
 }
 
-
-$(document).ready(function(){
-	$('#itemcode').change(function(event){
-		
-		var custName=document.getElementById("custName").value;
-
-		var code=document.getElementById("itemcode");
-		var itemCode = code.options[code.selectedIndex].value;
-		
-  		$.getJSON('getJsonItemdesc.html',{itemCode:itemCode}).done(function(json ) {
-  		
-  			
-  			document.getElementById("itemDesc").value=json[0].itemDesc;
-  			getItemRate();
-  		
-  	  })
-.fail(function( jqxhr, textStatus, error ) {
-alert("fail");
-});
-});
-});
-
-
+function addNewIteam(){
+	var newinvoiceNo =document.getElementById("ginvoiceno").value;
+	alert(newinvoiceNo);
+	location.href="createinvoice.html?newinvoiceNo="+newinvoiceNo;
+}
     
     
 $(function() {
@@ -315,9 +290,9 @@ function deleteRowsChecked() {
 					var input = inputs[inputi];
 					if (input.type === 'checkbox' && input.checked) {
 						var srno = input.value;
-						alert(srno);
+					
 						 $.ajax({
-							url : "deletedchallanitems.html",
+							url : "deleteinvoiceitem.html",
 							type : "GET",
 						    data: "srno=" + srno ,
 							
@@ -337,12 +312,35 @@ function deleteRowsChecked() {
 }
 
 
-function updatedchallanstatus()
+
+$(document).ready(function(){
+	$('#itemcode').change(function(event){
+		
+		var custName=document.getElementById("custName").value;
+
+		var code=document.getElementById("itemcode");
+		var itemCode = code.options[code.selectedIndex].value;
+		
+  		$.getJSON('getJsonItemdesc.html',{itemCode:itemCode}).done(function(json ) {
+  		
+  			
+  			document.getElementById("itemDesc").value=json[0].itemDesc;
+  			getItemRate();
+  		
+  	  })
+.fail(function( jqxhr, textStatus, error ) {
+alert("fail");
+});
+});
+});
+
+
+function updateginvoicestatus()
 {
 	
-	var dchallanno=document.getElementById("dchallanno").value;
+	var invoiceno=document.getElementById("ginvoiceno").value;
 	
-	$.getJSON('updatedchallanstatus.html',{dchallanno:dchallanno,status:'confirm'}).done(function(json ) {
+	$.getJSON('updateginvoicestatus.html',{invoiceno:invoiceno,status:'confirm'}).done(function(json ) {
 	
 	  })
 	

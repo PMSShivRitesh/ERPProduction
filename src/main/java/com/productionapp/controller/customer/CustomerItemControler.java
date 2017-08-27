@@ -5,11 +5,13 @@ import java.util.List;
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.google.gson.Gson;
 import com.productionapp.model.customer.CustomerItems;
 import com.productionapp.service.customer.CustomerDetailService;
@@ -33,7 +35,7 @@ public class CustomerItemControler {
 	}
 	
 	@RequestMapping("saveCustomerItem")
-	public ModelAndView saveItemDetail(@ModelAttribute CustomerItems modelobj) throws Exception
+	public String saveItemDetail(@RequestBody CustomerItems modelobj) throws Exception
 	{
 		loger.info("Allocate Item to customer");
 		ModelAndView model=new ModelAndView("/Customer/allocateitem");
@@ -41,9 +43,48 @@ public class CustomerItemControler {
 		modelobj.setCustId(custId);
 		custitemservice.allocateItem(modelobj);
 		List<CustomerItems>custitemlst=custitemservice.getCustomerItems(custId);
-		model.addObject("custName",modelobj.getCustName());
-		model.addObject("custitemlst",custitemlst);
-		return model;
+		Gson json=new Gson();
+		String gson=json.toJson(custitemlst);
+		//model.addObject("custName",modelobj.getCustName());
+		//model.addObject("custitemlst",custitemlst);
+		return gson;
+	}
+	@RequestMapping("/checkcustitemexist")
+	 public  String checkdocumentexist(@RequestParam(value="custName")String custName,@RequestParam(value="itemCode") String itemCode)
+	{
+		loger.info("check customer Item exist or not");
+		int custId=custservice.getCustId(custName);
+		boolean flag=false;
+		flag=custitemservice.checkcustitemexist(custId,itemCode);
+		String returnText=null;
+	        if(flag){
+	        
+	        	//cpservice.savecustProcessRate(custprocessrateobj);
+	            returnText = "Item Exists " +itemCode;
+	        }else{
+	            returnText = "1";
+	        }
+	       
+	        Gson gson=new Gson();
+			String json=gson.toJson(returnText);
+			return json;
+	  
+	}
+	
+	@RequestMapping("getCustomerAllocatedItem")
+	public String getCustomerAllocatedItem(@RequestBody CustomerItems modelobj) throws Exception
+	{
+		loger.info("get allocated items");
+		
+		int custId=custservice.getCustId(modelobj.getCustName());
+		modelobj.setCustId(custId);
+		
+		List<CustomerItems>custitemlst=custitemservice.getCustomerItems(custId);
+		Gson json=new Gson();
+		String gson=json.toJson(custitemlst);
+		//model.addObject("custName",modelobj.getCustName());
+		//model.addObject("custitemlst",custitemlst);
+		return gson;
 	}
 	
 	@RequestMapping("/getcustItemcodelist")
@@ -55,7 +96,6 @@ public class CustomerItemControler {
 	
 		Gson gson = new Gson();
 	    String json = gson.toJson(itemcodelst); 
-		
 		
 		return json;
 	}
@@ -73,6 +113,14 @@ public class CustomerItemControler {
 		
 		
 		return json;
+	}
+	
+	// deepak change
+	@RequestMapping("/deleteCustomerItem")
+	public  String deletecustomercontactpeople(@RequestParam(value="custitemid")String custitemid)
+	{
+		custitemservice.deleteCustomerItem(Integer.parseInt(custitemid));
+				 return "deleted";
 	}
 
 

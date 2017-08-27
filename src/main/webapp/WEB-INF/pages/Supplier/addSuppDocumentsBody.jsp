@@ -1,7 +1,7 @@
 <fieldset class="fieldset-style">
 <div class="alert alert-success" id="idsuccess">
 			<button type="button" class="close" data-dismiss="alert">&times;</button>
-			<i class="icon-thumbs-up"></i>Records added successfully!
+			<i class="icon-thumbs-up"></i>
 		</div>
 		<script type="text/javascript">
 		$("#idsuccess").hide();
@@ -20,7 +20,7 @@
 								<i class="icon-trash"></i>
 							</div>
 							
-							<div class="btn" title="G To Supplier Home Page" onclick="gethomepage();" id="btnclear">
+							<div class="btn" title="Go To Supplier Home Page" onclick="gethomepage();" id="btnclear">
 								<i class="icon-home"></i>
 							</div>
 						</div>
@@ -34,7 +34,7 @@
 						<div class="control-group">
 							<label class="control-label">Document</label>
 							<div class="controls">
-								<select class="form-control" name="docname" id="docname" onchange="">
+								<select class="form-control" name="docname" id="docname" onchange="checkdocumentnumberexist()">
 									<option>Select</option>
 										<c:if test="${not empty documentNamelst}">
 											
@@ -219,8 +219,7 @@
 						<thead style="font-size: 12px;">
 						<tr bgcolor="#84939f">
 							<th>Sr.No</th>
-							<th>Perticular</th>
-						
+							<th>Particular</th>
 							<th>Number</th>
 							<th>w.e.f</th>
 							<th>Action</th>
@@ -263,32 +262,30 @@
 	</fieldset>
 <script type="text/javascript">
 
-/*
-function checksuppdocumentnumberexist() {
+function checkdocumentnumberexist() {
     // get the form values
-   var suppName = $('#suppName').val();
-	var perticular=$('#perticular').val();
+   var suppId = $('#suppId').val();
+	var docname=$('#docname').val();
     $.ajax({
     type: "POST",
     url: "checksuppdocumentexist.html",
-    data: "suppName=" + suppName + "&perticular=" + perticular,
+    data: "suppId=" + suppId + "&docname=" + docname,
     success: function(data){
     	if(data=='"1"'){
-   		 $('#idsuccess').hide();
-			}
-   else
-   	{
-   		
-   	   $('#idsuccess').show();
-   	
-   	
-   //$("#idsuccess").show();
-   $("#idsuccess").html("<button type='button' class='close' data-dismiss='alert' onclick='hide();'>&times;</button><i class='icon-thumbs-up'></i>"+
-   		data);
-   
-  
-   
-   	}
+      		 $('#idsuccess').hide();
+   			}
+      else
+      	{
+      		       	   $('#idsuccess').show();
+      	
+      	
+      //$("#idsuccess").show();
+      $("#idsuccess").html("<button type='button' class='close' data-dismiss='alert' onclick='hide();'>&times;</button><i class='icon-thumbs-up'></i>"+
+      		data);
+      
+     
+      
+      	}
  
     },
     error: function(e){
@@ -297,19 +294,11 @@ function checksuppdocumentnumberexist() {
     });
     }
 
-*/
-function  gethomepage()
-{
-	  location.href="getSystems.html?moduleName=Supplier";
-}
-
-
-
 
 function deleteRowsChecked() {
 	var check1 = 0;
-	var table = document.getElementById("idtable");
 	
+	var table = document.getElementById("idtable");
 	
 	for ( var rowi = table.rows.length; rowi--;) {
 		var row = table.rows[rowi];
@@ -329,6 +318,7 @@ function deleteRowsChecked() {
 		var result = confirm("Are you sure you want to delete selected records?");
 		if (result) {
 			var table = document.getElementById("idtable");
+		
 			for ( var rowi = table.rows.length; rowi--;) {
 				var row = table.rows[rowi];
 				var inputs = row.getElementsByTagName('input');
@@ -336,12 +326,14 @@ function deleteRowsChecked() {
 					var input = inputs[inputi];
 					if (input.type === 'checkbox' && input.checked) {
 						var suppDocId = input.value;
-						alert(dname);
-						 $.ajax({
+						
+						 $.ajax({ 	
 							url : "deletesuppdocument.html",
 							type : "GET",
 						    data: "suppDocId=" + suppDocId,
-			success : function(data) {
+							
+
+							success : function(data) {
 								var obj = JSON.parse(data.status);
 							}
 						}); 
@@ -353,6 +345,11 @@ function deleteRowsChecked() {
 			$('#iderror').hide();
 		}
 	}
+}
+
+function  gethomepage()
+{
+	  location.href="getSystems.html?moduleName=Supplier";
 }
 
 

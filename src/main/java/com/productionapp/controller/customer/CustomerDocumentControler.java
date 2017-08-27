@@ -88,7 +88,7 @@ public class CustomerDocumentControler {
 					byte[] bytes = file.getBytes();
 
 					// Creating the directory to store file
-					Path newDir = Paths.get("E:\\TestCopy");
+					Path newDir = Paths.get("D:\\Deepak");
 					String rootPath = newDir.toString();
 					File dir = new File(rootPath + File.separator + "tmpFiles");
 					if (!dir.exists())
@@ -104,7 +104,7 @@ public class CustomerDocumentControler {
 					custdocmodelobj.setDoclocation(serverFile.getAbsolutePath());
 					loger.info("Server File Location="+ serverFile.getAbsolutePath());
 
-						System.out.println("test *******************************************************"+serverFile.getAbsolutePath());
+						
 				} catch (Exception e) {
 					 e.printStackTrace();
 				}
@@ -182,7 +182,7 @@ public class CustomerDocumentControler {
 	{
 		boolean flag=false;
 		
-		System.out.println("test *******************************************************"+custDocId);
+		
 		flag=custdocservice.deleteCustomerDocuments(Integer.parseInt(custDocId));
 			return "deleted";
 	  

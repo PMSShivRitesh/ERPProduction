@@ -2,10 +2,22 @@
 
 <div class="alert alert-success" id="idsuccess">
 			<button type="button" class="close" data-dismiss="alert">&times;</button>
-			<i class="icon-thumbs-up"></i>Records added successfully!
+			<i class="icon-thumbs-up"></i>Record  Delete Successfully 
 		</div>
+		<div class="alert alert-success" id="idsuccess1">
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+			<i class="icon-thumbs-up"></i> Details Added
+		</div>
+		<div class="alert alert-success" id="idsuccess2">
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+			<i class="icon-thumbs-up"></i>
+		</div>
+				
 		<script type="text/javascript">
 		$("#idsuccess").hide();
+	
+		$("#idsuccess1").show();		
+		$("#idsuccess2").hide();
 		</script>
 		
 <form action="addSupplierContactPersions.html" method="post">
@@ -38,9 +50,9 @@
 				<div class="row-fluid search-align">
 					<div class="firstquad">
 					<div class="control-group">
-							<label class="control-label">Persion Name</label>
+							<label class="control-label">Person Name</label>
 							<div class="controls">
-								<input type="text" class="form-control" name="contactPersionName" id="contactPersionName" placeholder="" onblur="checksuppcontackpersionexist()" />
+								<input type="text" class="form-control" name="contactPersionName" id="contactPersionName" required="required" onblur="checksuppcontackpersionexist()" />
 							</div>
 						</div>
 					 
@@ -85,7 +97,7 @@
 						 <div class="control-group">
 							<label class="control-label">Mobile</label>
 							<div class="controls">
-								<input type="text" class="form-control" name="phoneno" placeholder="" />
+								<input type="text" class="form-control" name="phoneno" required="required" />
 							</div>
 						</div>
 
@@ -213,7 +225,7 @@
 						<thead style="font-size: 12px;">
 						<tr bgcolor="#84939f">
 							<th>Sr No</th>
-											<th>Persion Name</th>
+											<th>Person Name</th>
 											<th>Designation</th>
 											<th>Mobile</th>
 											<th>Email</th>
@@ -272,7 +284,10 @@ function checksuppcontackpersionexist() {
     success: function(data){
 
     	if(data=='"1"'){
+    		
     		 $('#idsuccess').hide();
+    		 $("#idsuccess1").hide();
+    		 $("#idsuccess2").hide();
 			}
     else
     	{
@@ -330,7 +345,9 @@ function deleteRowsChecked() {
 
 	if (check1 == 0) {
 		$('#iderror').show();
-		$('#idsuccess').hide();
+		 $('#idsuccess').hide();
+		 $("#idsuccess1").hide();
+		 $("#idsuccess2").hide();
 	} else {
 		var result = confirm("Are you sure you want to delete selected records?");
 		if (result) {
