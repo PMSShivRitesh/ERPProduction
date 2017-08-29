@@ -68,6 +68,7 @@ xmlns:tx="http://www.springframework.org/schema/tx"
 				<value>com.productionapp.model.invoice.InvoiceDetail</value>
 				<value>com.productionapp.model.invoice.InvoiceItemDetail</value>
 				<value>com.productionapp.model.account.CustPayment</value>
+				<value>com.productionapp.model.pp.ProcessDetail</value>
 				
 			</list>
 		</property>
