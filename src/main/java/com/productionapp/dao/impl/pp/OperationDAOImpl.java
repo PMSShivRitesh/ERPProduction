@@ -8,6 +8,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.productionapp.dao.pp.OperationDAO;
@@ -15,34 +18,20 @@ import com.productionapp.model.pp.OperationModel;
 
 @Repository("operationDao")
 public class OperationDAOImpl   implements OperationDAO{
-	Connection conn;
-	PreparedStatement pstmt,pstmt1;
-	CallableStatement cstmt;
-	ResultSet rs;
 	
-
-	
+	@Autowired
+	SessionFactory sessionfactory;
 	@Override
 	public boolean saveOperation(OperationModel opeation) throws SQLException {
-	//	this.setConnection();
-		boolean falg=false;
-		this.pstmt=conn.prepareStatement("insert into operation(processName,operationName)values(?,?)");
-		this.pstmt.setString(1,opeation.getProcessName());
-		this.pstmt.setString(2,opeation.getOperationName());
-		int i=this.pstmt.executeUpdate();
-		if(i==1)
-		{
-			falg=true;
-		}
-		
-		return falg;
+		sessionfactory.getCurrentSession().saveOrUpdate(opeation);
+		return false;
 	}
 
 
 	@Override
 	public List<OperationModel> getOpertionJsonList(String processname) throws SQLException {
 		//setConnection();
-		List<OperationModel> operationJsonlst=new ArrayList<OperationModel>();
+		/*List<OperationModel> operationJsonlst=new ArrayList<OperationModel>();
 		
 		pstmt=conn.prepareStatement("select operationName from operation where processName=?");
 		pstmt.setString(1,processname);
@@ -61,8 +50,8 @@ public class OperationDAOImpl   implements OperationDAO{
 			pstmt.close();
 		if(conn!=null)
 			conn.close();
-		
-		return operationJsonlst;
+		*/
+		return null;
 	}
 
 }

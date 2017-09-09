@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/login.css" type="text/css">
 <link rel="stylesheet" href="css/panel.css" type="text/css">
-
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
 <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
 <link href="bootstrap/css/docs.css" rel="stylesheet">

@@ -24,7 +24,7 @@ public class InstrumentControler {
 	@RequestMapping("/addinstrument")
 	public ModelAndView getInstrumentInsertForm()
 	{
-		ModelAndView model=new ModelAndView("/PP/InstrumentInputInsertRequest");
+		ModelAndView model=new ModelAndView("/PP/addInstrumentDetail");
 		return model;
 	}
 	

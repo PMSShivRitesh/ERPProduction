@@ -3,13 +3,15 @@ package com.productionapp.service.impl.pp;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.productionapp.dao.pp.InstrumentDao;
 import com.productionapp.model.pp.InstrumentModel;
 import com.productionapp.service.pp.InstrumentService;
-
+@Transactional
 @Service("instrumentService")
 public class InstrumentServiceImpl implements InstrumentService {
 	@Autowired

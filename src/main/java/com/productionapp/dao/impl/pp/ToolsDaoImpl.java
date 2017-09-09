@@ -1,13 +1,11 @@
 package com.productionapp.dao.impl.pp;
 
-import java.sql.CallableStatement;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.productionapp.dao.pp.ToosDao;
@@ -16,49 +14,13 @@ import com.productionapp.model.pp.ToolModel;
 
 @Repository("toolsdao")
 public class ToolsDaoImpl implements ToosDao {
-
-	Connection conn;
-	PreparedStatement pstmt,pstmt1;
-	CallableStatement cstmt;
-	ResultSet rs;
-	
+@Autowired
+SessionFactory sessionfactory;
 
 	@Override
-	public boolean addTools(String toolName) {
-		//this.setConnection();
-		boolean flag=false;
-		try
-		{
-			this.pstmt=this.conn.prepareStatement("insert into tools(toolName)values(?)");
-			this.pstmt.setString(1, toolName);
-			int i=this.pstmt.executeUpdate();
-			if(i==1)
-			{
-				flag=true;
-			}
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-		}
-		finally
-		{
-			
-			try
-			{
-				if(this.pstmt!=null)
-					this.pstmt.close();
-				if(this.conn!=null)
-					this.conn.close();
-			}
-			catch(Exception e)
-			{
-				
-			}
-		}
-		
-		
-		return flag;
+	public boolean addTools(ToolModel toolmodel) {
+		sessionfactory.getCurrentSession().save(toolmodel);
+		return false;
 	}
 	
 	
@@ -66,7 +28,7 @@ public class ToolsDaoImpl implements ToosDao {
 	@Override
 	public boolean deleteTool(String toolName) {
 		//this.setConnection();
-		boolean flag=false;
+		/*boolean flag=false;
 		try
 		{
 			this.pstmt=this.conn.prepareStatement("delete from tools where toolName=?");
@@ -97,15 +59,15 @@ public class ToolsDaoImpl implements ToosDao {
 			}
 		}
 		
-		
-		return flag;
+		*/
+		return false;
 	}
 	
 	
 	public List<ToolModel>getToolLst()
 	{
 		//this.setConnection();
-		int srno=1;
+		/*int srno=1;
 		
 		List<ToolModel>tollst=new LinkedList<ToolModel>();
 		try
@@ -146,8 +108,8 @@ public class ToolsDaoImpl implements ToosDao {
 				e.printStackTrace();
 			}
 		}
-		
-		return tollst;
+		*/
+		return null;
 	}
 	
 	
@@ -157,7 +119,7 @@ public class ToolsDaoImpl implements ToosDao {
 	{
 		//this.setConnection();
 		
-		List<String>toolnamest=new ArrayList();
+		/*List<String>toolnamest=new ArrayList();
 		try
 		{
 			this.pstmt=this.conn.prepareStatement("select toolName from tools");
@@ -190,8 +152,8 @@ public class ToolsDaoImpl implements ToosDao {
 			{
 				e.printStackTrace();
 			}
-		}
+		}*/
 		
-		return toolnamest;
+		return null;
 	}
 }

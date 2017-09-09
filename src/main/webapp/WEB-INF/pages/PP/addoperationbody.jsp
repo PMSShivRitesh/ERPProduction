@@ -42,10 +42,10 @@
 					<div class="control-group">
 							<label class="control-label">Select Process</label>
 							<div class="controls">
-								<select class="form-control" name="processName" id="processName" >
+								<select class="form-control" name="processId" id="processId" >
 											<c:if test="${not empty processlist}">
              		           					<c:forEach var="processlist" items="${processlist}">
-             		           						<option value="${processlist}">${processlist}</option>
+             		           						<option value="${processlist.key}">${processlist.value}</option>
 												</c:forEach>
 											</c:if>
 										</select>
@@ -95,12 +95,12 @@
 function saveFormDate() {
 
     // get the form values
-    var processName = $('#processName').val();
+    var processId = $('#processId').val();
     var operationName = $('#operationName').val();
  
     var flag=true;
     
-    if (processName=="")
+    if (processId=="")
 	{
 		flag = false;
 		alert("Select Process name")
@@ -119,7 +119,7 @@ function saveFormDate() {
     $.ajax({
     type: "POST",
     url: "saveOperation.html",
-    data: "processName=" + processName+"&operationName="+operationName,
+    data: "processId=" + processId+"&operationName="+operationName,
     success: function(response){
     // we have the response
     	  $('#idsuccess').show();

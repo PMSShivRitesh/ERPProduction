@@ -2,6 +2,7 @@ package com.productionapp.service.impl.pp;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 import javax.transaction.Transactional;
 
@@ -22,15 +23,17 @@ public class ProcessServicessImpl implements ProcessServicess {
 		// TODO Auto-generated method stub
 		return dao.saveProcess(processdetail);
 	}
-	@Override
-	public List<String> getProcessList() throws SQLException {
-		// TODO Auto-generated method stub
-		return dao.getProcessList();
-	}
+	
 	@Override
 	public List<ProcessDetail> getppAllProcessDetail() throws SQLException {
 		// TODO Auto-generated method stub
 		return dao.getppAllProcessDetail();
+	}
+
+	@Override
+	public Map getProcessList() throws SQLException {
+		// TODO Auto-generated method stub
+		return dao.getProcessList();
 	}
 	
 

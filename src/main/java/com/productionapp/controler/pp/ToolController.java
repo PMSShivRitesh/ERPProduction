@@ -2,18 +2,18 @@ package com.productionapp.controler.pp;
 
 import java.sql.SQLException;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.productionapp.model.pp.ToolModel;
 import com.productionapp.service.pp.ToolService;
 
-@Controller
+@RestController
 public class ToolController {
 	@Autowired
 	ToolService toolservice;
@@ -21,7 +21,7 @@ public class ToolController {
 	@RequestMapping("addtool")
 	public ModelAndView gettollinsertform()
 	{
-		ModelAndView model=new ModelAndView("/PP/pptoolsinputRequest");
+		ModelAndView model=new ModelAndView("/PP/addtool");
 		return model;
 	}
 	
@@ -49,11 +49,11 @@ public class ToolController {
 	
 	
 	@RequestMapping("saveToos")
-	public @ResponseBody String saveToos(@RequestParam(value="toolName") String toolName) throws SQLException
+	public @ResponseBody String saveToos(@ModelAttribute ToolModel toolmodel) throws SQLException
 	{
 		String msg="";
 		boolean flag=false;
-		flag=toolservice.addTools(toolName);
+		flag=toolservice.addTools(toolmodel);
 		if(flag)
 		{
 			msg="Successfully Added";

@@ -1,6 +1,7 @@
 package com.productionapp.controler.pp;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,8 @@ public class ProcessControler {
 		ModelAndView model;
 		try{
 			model=new ModelAndView("/PP/addProcessRequest");
+			List<ProcessDetail>lst=pservice.getppAllProcessDetail();
+			model.addObject("lst",lst);
 		}catch(Exception e){
 			throw new Exception();
 		}
@@ -37,6 +40,8 @@ public class ProcessControler {
 		try{	
 				model=new ModelAndView("/PP/ppProcessInputRequest");
 				pservice.saveProcess(processdetail);
+				//List<ProcessDetail>lst=pservice.getppAllProcessDetail();
+				//model.addObject("lst",lst);
 		}catch(Exception e){
 			throw new Exception();
 		}

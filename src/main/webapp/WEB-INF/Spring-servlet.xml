@@ -69,7 +69,9 @@ xmlns:tx="http://www.springframework.org/schema/tx"
 				<value>com.productionapp.model.invoice.InvoiceItemDetail</value>
 				<value>com.productionapp.model.account.CustPayment</value>
 				<value>com.productionapp.model.pp.ProcessDetail</value>
-				
+					<value>com.productionapp.model.pp.OperationModel</value>	
+					<value>com.productionapp.model.pp.ToolModel</value>
+					<value>com.productionapp.model.pp.InstrumentModel</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">

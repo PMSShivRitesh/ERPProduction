@@ -21,10 +21,7 @@
 						<div class="span10" align="left">Add Process</div>
 						<div class="span2" align="right">
 							<input type="button" class="btn-save" value="" id="btnsave" onclick="saveFormDate()" title="Save Process" />
-							<div class="btn" align="left" title="Process List" onclick="getprocess()" >
-							<i class="icon-list-alt"></i>
-							<!--  	<input type="button" class="glyphicon glyphicon-step-backward" value="Next" onclick="getNextForm()"/>-->
-							</div>
+					
 							<div class="btn" align="left" title="Production And Planning Home" onclick="gethomepage()" >
 							<i class="icon-home"></i>
 							<!--  	<input type="button" class="glyphicon glyphicon-step-backward" value="Next" onclick="getNextForm()"/>-->
@@ -70,6 +67,71 @@
 					
 				</div>
 			</div>
+			
+				 <div class="panel panel-default" id="idresults">
+			<div class="panel-heading">
+				<div class="container-fluid header-padding">
+					<div class="row-fluid">
+						<div class="span9" align="left">Process List<!-- Project Task List --></div>
+						
+							<div class="span3" align="right">
+							
+							<div class="btn" onclick="deleteRowsChecked();" id="deletebtn" title="Delete selected Process">
+								<i class="icon-trash"></i>
+							</div>
+							
+						</div>
+						
+					</div>
+				</div>
+			</div>
+
+			<div class="panel-body">
+			<div class="singleline-records">
+					<table id="idtable" class="table table-bordered insideform">
+						<thead style="font-size: 12px;">
+						<tr bgcolor="#84939f">
+							<th Style="width:5%">Sr.No</th>
+							<th>Process Name</th>
+							<th>Action</th>
+							
+						
+						</tr>
+									</thead>
+									<tbody style="font-size: 12px;">
+										
+											<c:if test="${not empty lst}">
+												<% int i=0;
+												%>
+             		           					<c:forEach var="listValue" items="${lst}">
+             		           					<%
+             		           					if(i%2==1){
+             		           						%>
+             		           							<tr class="" bgcolor="white">
+             		           						<%}else{ %>
+             		           							<tr class="" bgcolor="#dfe4e6">
+             		           							<%
+             		           							}
+             		           					i++;
+             		           					%>
+             		           						<td><%=i %></td>
+             		           						<td>${listValue.processName}</td>
+             		           						<td><input name="chk" id="chk" value="${listValue.processName}" type="checkbox">
+             		           						</td>
+             		           					
+             		           					</tr>
+												</c:forEach>
+											</c:if>
+										
+									</tbody>
+								</table>
+								
+								
+								
+				
+				</div>
+						
+	 
 		</div>
 		</div>
 	 </form> 

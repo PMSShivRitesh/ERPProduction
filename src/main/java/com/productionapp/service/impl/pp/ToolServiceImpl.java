@@ -2,15 +2,15 @@ package com.productionapp.service.impl.pp;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.productionapp.dao.pp.ToosDao;
 import com.productionapp.model.pp.ToolModel;
 import com.productionapp.service.pp.ToolService;
-
-
-
+@Transactional
 @Service("toolservice")
 public class ToolServiceImpl implements ToolService {
 	
@@ -18,9 +18,9 @@ public class ToolServiceImpl implements ToolService {
 	ToosDao dao;
 
 	@Override
-	public boolean addTools(String toolName) {
+	public boolean addTools(ToolModel toolmodel) {
 		// TODO Auto-generated method stub
-		return dao.addTools(toolName);
+		return dao.addTools(toolmodel);
 	}
 
 	@Override
