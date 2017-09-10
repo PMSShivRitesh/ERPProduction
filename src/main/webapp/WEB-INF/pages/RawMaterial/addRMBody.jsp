@@ -1,7 +1,7 @@
 
 
 <fieldset class="fieldset-style">
-<form role="form" action="RMGradeSave.html">
+<form role="form" action="saveRmGradeDetail.html">
 <div class="form-horizontal">
 		<div class="panel panel-default">
 			<div class="panel-heading">
@@ -24,11 +24,11 @@
 						<div class="control-group">
 							<label class="control-label">Basic RM Grade</label>
 							<div class="controls">
-								<select class="form-control" name="brmgname" id="brmgname">
+								<select class="form-control" name="brmId" id="brmId">
 										<option>--Select--</option>
 											<c:if test="${not empty brmgradelst}">
              		           					<c:forEach var="listValue" items="${brmgradelst}">
-             		           						<option value="${listValue}">${listValue}</option>
+             		           						<option value="${listValue.key}">${listValue.value}</option>
 												</c:forEach>
 											</c:if>
 										</select>
@@ -67,7 +67,7 @@
 						<div class="control-group">
 							<label class="control-label">RM Sub Grade</label>
 							<div class="controls">
-								<input type="text" class="form-control" name="rmGrade" placeholder="" />
+								<input type="text" class="form-control" name="rmSubGrade" placeholder="" />
 							</div>
 						</div>
 
@@ -96,7 +96,7 @@
 						<div class="control-group">
 							<label class="control-label">Density</label>
 							<div class="controls">
-								<input type="text" class="form-control" name="Spw" id="spw" placeholder="" />
+								<input type="text" class="form-control" name="density" id="density" placeholder="" />
 							</div>
 						</div>
 						
@@ -107,16 +107,10 @@
 							</div>
 						</div>
 						<div class="control-group">
-							<label class="control-label">Select Supplier</label>
+							<label class="control-label">Supplier</label>
 							<div class="controls">
-								<select class="form-control" name="supplierName" id="supplierName" onchange="getDistrictLst()">
-											<option>--Select--</option>
-											<c:if test="${not empty supplierNameList}">
-             		           					<c:forEach var="listValue" items="${supplierNameList}">
-             		           						<option value="${listValue}">${listValue}</option>
-												</c:forEach>
-											</c:if>
-										</select>
+								<input type="text" name="suppName"  ng-model="e.suppName" id="suppName" class="form-control" required="required" placeholder=""/>
+
 							</div>
 						</div>
 				

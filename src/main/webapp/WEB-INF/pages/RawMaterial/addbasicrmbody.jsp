@@ -28,7 +28,7 @@
 						<div class="control-group">
 							<label class="control-label">Basic RM</label>
 							<div class="controls">
-								<input type="text" name="brmgname" class="form-control" placeholder="" required="required" />
+								<input type="text" name="brmName" class="form-control" placeholder="" required="required" />
 							</div>
 						</div>
 						

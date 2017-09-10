@@ -17,7 +17,7 @@
 <%-- <jsp:directive.include file="/Homepages/header.jsp" /> --%>
 	<%@ include file="/WEB-INF/pages/template/headeremployee.jsp"%>
 	<%@ include file="/WEB-INF/pages/template/leftmenu.jsp"%>
-	<%@ include file="/WEB-INF/pages/RawMaterial/rminputbody.jsp"%>
+	<%@ include file="/WEB-INF/pages/RawMaterial/addbasicrmbody.jsp"%>
 	<%@ include file="/WEB-INF/pages/template/footer.jsp"%>
 <!--==================== NAVIGATION =========================-->
 

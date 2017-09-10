@@ -72,7 +72,9 @@ xmlns:tx="http://www.springframework.org/schema/tx"
 					<value>com.productionapp.model.pp.OperationModel</value>	
 					<value>com.productionapp.model.pp.ToolModel</value>
 					<value>com.productionapp.model.pp.InstrumentModel</value>
-			</list>
+					<value>com.productionapp.model.RM.BasicRM</value>
+					<value>com.productionapp.model.RM.RawMaterialGrade</value>
+								</list>
 		</property>
 		<property name="hibernateProperties">
 			<props>

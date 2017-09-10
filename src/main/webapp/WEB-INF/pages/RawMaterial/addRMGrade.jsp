@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="css/login.css" type="text/css">
 <link rel="stylesheet" href="css/panel.css" type="text/css">
 
+<script type="text/javascript" src="js/autocompleter/suppnameauto.js"></script>
 <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
 <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
 <link href="bootstrap/css/docs.css" rel="stylesheet">
@@ -17,7 +18,7 @@
 <%-- <jsp:directive.include file="/Homepages/header.jsp" /> --%>
 	<%@ include file="/WEB-INF/pages/template/headeremployee.jsp"%>
 	<%@ include file="/WEB-INF/pages/template/leftmenu.jsp"%>
-	<%@ include file="/WEB-INF/pages/RawMaterial/brminputbody.jsp"%>
+	<%@ include file="/WEB-INF/pages/RawMaterial/addRMBody.jsp"%>
 	<%@ include file="/WEB-INF/pages/template/footer.jsp"%>
 <!--==================== NAVIGATION =========================-->
 
