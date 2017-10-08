@@ -2,8 +2,12 @@ package com.productionapp.dao.impl.RM;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Projection;
+import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -24,7 +28,13 @@ public class RawMaterialDAOImpl implements RawMaterialDAO{
 		return false;
 	}
 
+	@Override
+	public List getRMGradeNameBaseOnIdList(String bgradeid) {
+		
+		return sessiofactory.getCurrentSession().createCriteria(RawMaterialGrade.class).add(Restrictions.eq("brmId", bgradeid)).list();
 	
+		
+	}
 
 	public List<String> getBRGrade() throws SQLException {
 		/*this.setConnection();
@@ -102,32 +112,7 @@ public class RawMaterialDAOImpl implements RawMaterialDAO{
 	}
 
 	
-	@Override
-	public List<RawMaterialGrade> getRMGradeListForJson(String brGrade)throws SQLException {
-	/*	setConnection();
-		List<RawMaterialGrade> rmGradeJsonlst=new ArrayList<RawMaterialGrade>();
-		
-		pstmt=conn.prepareStatement("select rmGrade from RawMaterialGrade where brmgname=?");
-		pstmt.setString(1,brGrade);
-		rs=pstmt.executeQuery();
-		while(rs.next())
-		{
-			RawMaterialGrade obj=new RawMaterialGrade();
-			obj.setRmGrade(rs.getString("rmGrade"));
-			rmGradeJsonlst.add(obj);
-			
-		}
-		
-		if(rs!=null)
-			rs.close();
-		if(pstmt!=null)
-			pstmt.close();
-		if(conn!=null)
-			conn.close();
-		*/
-		return null;
-		
-	}
+	
 
 	@Override
 	public boolean saveRmShape(String rmShapeName) throws SQLException {

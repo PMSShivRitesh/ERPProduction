@@ -1,15 +1,19 @@
 package com.productionapp.controller.RM;
 import java.sql.SQLException;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
 import com.productionapp.model.RM.RawMaterialGrade;
 import com.productionapp.service.SupplierService;
 import com.productionapp.service.RM.BasicRmSerivce;
@@ -17,7 +21,7 @@ import com.productionapp.service.RM.RawMaterialService;
 
 
 
-@Controller
+@RestController
 public class RawMaterialControler {
 	@Autowired
 	BasicRmSerivce basicrmservice;;
@@ -51,6 +55,18 @@ public class RawMaterialControler {
 		return model;
 	}
 	
+	@RequestMapping("/getDropDownRawMaterialNameList")
+	public  String getDropDownRawMaterialNameList(@RequestParam(value="brmid")String brmid) throws SQLException
+	{
+		
+		List<RawMaterialGrade>rmgradenamelst=rmservice.getRMGradeNameBaseOnIdList(brmid);
+		
+		Gson gson = new Gson();
+	    String json = gson.toJson(rmgradenamelst); 
+		
+		return json;
+	}
+	
 /*	@RequestMapping("saveBasicRMGrade")
 	public ModelAndView saveBasicRMGrade(@RequestParam(value="brmgname") String brmgname) throws SQLException
 	{
@@ -60,17 +76,7 @@ public class RawMaterialControler {
 	}
 	
 	
-	@RequestMapping("/getJsonRawMaterialList")
-	public @ResponseBody String getJsonRawMaterialList(@RequestParam(value="name")String brGrade) throws SQLException
-	{
-		
-		List<RawMaterialGrade>rmgradejsonlst=rawMaterialService.getRMGradeListForJson(brGrade);
-		
-		Gson gson = new Gson();
-	    String json = gson.toJson(rmgradejsonlst); 
-		
-		return json;
-	}
+	
 	
 	
 	

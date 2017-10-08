@@ -3,6 +3,7 @@ package com.productionapp.controler.quotation;
 import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,11 +14,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.productionapp.service.RM.BasicRmSerivce;
+import com.productionapp.service.RM.RawMaterialService;
+
 @RestController
 public class QuotationControler {
-	/*@Autowired
-	RawMaterialService rawMaterialService;
 	@Autowired
+	BasicRmSerivce basicrmservice;
+	@Autowired
+	RawMaterialService rawMaterialService;
+/*	@Autowired
 	ProcessServicess pservice;
 	@Autowired
 	QuotationProcessService qpservice;
@@ -33,10 +39,10 @@ public class QuotationControler {
 	@RequestMapping("/createquatition")
 	public ModelAndView getQuotationEntryForm() throws SQLException
 	{
-		ModelAndView model=new ModelAndView("/Quotation/QoutationCreateInputRequest");
-		List<String>brmgradelst=new LinkedList<>();
-		//brmgradelst=rawMaterialService.getBRGrade();
-		model.addObject("brmgradelst",brmgradelst);
+		ModelAndView model=new ModelAndView("/Quotation/cratequotation");
+		Map brmlst=basicrmservice.getBRMGradeNameList();
+		
+		model.addObject("brmlst",brmlst);
 		
 		//List<String>rmshapelst=rawMaterialService.getRMShapeList();
 		//model.addObject("rmshapelst",rmshapelst);
@@ -45,6 +51,15 @@ public class QuotationControler {
 		//model.addObject("qno",qno);
 		
 		return model;
+	}
+	
+	@RequestMapping("/qoutationDetail")
+	public ModelAndView getQuotationDetailForm()
+	{
+		ModelAndView model=new ModelAndView("/Quotation/QoutationDetailRequest");
+		
+		return model;
+		
 	}
 	
 	/*

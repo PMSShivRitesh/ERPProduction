@@ -134,11 +134,11 @@
 						<div class="control-group">
 							<label class="control-label">Basic RM Grade</label>
 							<div class="controls">
-								<select class="form-control" onchange="getRawMaterialLst()" name="brmGrade" id="brmGrade">
+								<select class="form-control" onchange="getRawMaterialLst()" name="brmid" id="brmid">
 								<option value="select">--Select--</option>
-											<c:if test="${not empty brmgradelst}">
-             		           					<c:forEach var="listValue" items="${brmgradelst}">
-             		           						<option value="${listValue}">${listValue}</option>
+											<c:if test="${not empty brmlst}">
+             		           					<c:forEach var="listValue" items="${brmlst}">
+             		           						<option value="${listValue.key}">${listValue.value}</option>
 												</c:forEach>
 											</c:if>
 								</select>
@@ -221,11 +221,11 @@ $(document).ready(function() {
 function getRawMaterialLst()
 	{
 	
-		var brmGrade=document.getElementById("brmGrade");
+		var brmGrade=document.getElementById("brmid");
 		var brawmaterialname = brmGrade.options[brmGrade.selectedIndex].value;
 				var rawMaterialList;
 				jQuery.ajax({
-			 	 url: "getJsonRawMaterialList.html?name="+brawmaterialname,
+			 	 url: "getDropDownRawMaterialNameList.html?brmid="+brawmaterialname,
  				 type: "POST",
 	
 			  	dataType: "json",
@@ -237,7 +237,7 @@ function getRawMaterialLst()
   					   	$('#rmGrade').append('<option value="select">Select RM Grade</option>');
      					 for (i in rawMaterialList ) {
    		
-       			   $('#rmGrade').append('<option value="' + rawMaterialList[i].rmGrade + '">' +rawMaterialList[i].rmGrade + '</option>');
+       			   $('#rmGrade').append('<option value="' + rawMaterialList[i].rmId + '">' +rawMaterialList[i].rmSubGrade + '</option>');
       				}
  			 		}
 		
@@ -361,7 +361,7 @@ function getcustItemList()
 	
 			var List;
 			jQuery.ajax({
-		 	url: "getJsonItemcodelist.html?custName="+custName,
+		 	url: "getcustItemcodelist.html?custName="+custName,
 			type: "POST",
 			dataType: "json",
 			async: false,
@@ -393,10 +393,10 @@ $(document).ready(function(){
 		var code=document.getElementById("itemCode");
 		var itemCode = code.options[code.selectedIndex].value;
 		
-  		$.getJSON('getJsonItemdescnitemrate.html',{custName:custName,itemCode:itemCode}).done(function(json ) {
+  		$.getJSON('getJsonItemdesc.html',{itemCode:itemCode}).done(function(json ) {
   		
   			
-  			document.getElementById("itemDescription").value=json[0].itemDescription;
+  			document.getElementById("itemDescription").value=json[0].itemDesc;
   			
   	  })
 .fail(function( jqxhr, textStatus, error ) {

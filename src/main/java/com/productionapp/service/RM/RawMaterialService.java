@@ -15,7 +15,7 @@ public interface RawMaterialService {
 	List<String>getBRGrade()throws SQLException;
 	
 	boolean saveRmGrade(RawMaterialGrade rmgrade) throws SQLException;
-	List<RawMaterialGrade>getRMGradeListForJson(String brGrade)throws SQLException;
+	public List getRMGradeNameBaseOnIdList(String bgradeid);
 	
 	boolean saveRmShape(String rmShapeName) throws SQLException;
 	List<String>getRMShapeList()throws SQLException;

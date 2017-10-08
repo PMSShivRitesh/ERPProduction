@@ -27,6 +27,11 @@ public class RawMaterialServiceImpl implements RawMaterialService {
 		return dao.saveRmGrade(rmgrade);
 	}
 	@Override
+	public List getRMGradeNameBaseOnIdList(String bgradeid) {
+		// TODO Auto-generated method stub
+		return dao.getRMGradeNameBaseOnIdList(bgradeid);
+	}
+	@Override
 	public boolean saveRMGradeDetail(RawMaterialGrade rmmodel) throws SQLException {
 		// TODO Auto-generated method stub
 		return dao.saveRMGradeDetail(rmmodel);
@@ -52,12 +57,7 @@ public class RawMaterialServiceImpl implements RawMaterialService {
 		// TODO Auto-generated method stub
 		return dao.getBRGrade();
 	}
-	@Override
-	public List<RawMaterialGrade> getRMGradeListForJson(String brGrade)
-			throws SQLException {
-		// TODO Auto-generated method stub
-		return dao.getRMGradeListForJson(brGrade);
-	}
+	
 	@Override
 	public List<String> getRMShapeList() throws SQLException {
 		// TODO Auto-generated method stub
@@ -87,6 +87,7 @@ public class RawMaterialServiceImpl implements RawMaterialService {
 		// TODO Auto-generated method stub
 		return dao.getSahpeDetailInJsonList(rmShapeName);
 	}
+	
 	
 	
 
