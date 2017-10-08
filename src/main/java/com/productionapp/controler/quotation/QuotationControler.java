@@ -56,6 +56,7 @@ public class QuotationControler {
 	@RequestMapping("/qoutationDetail")
 	public ModelAndView getQuotationDetailForm()
 	{
+		System.out.println("tesa");
 		ModelAndView model=new ModelAndView("/Quotation/QoutationDetailRequest");
 		
 		return model;
